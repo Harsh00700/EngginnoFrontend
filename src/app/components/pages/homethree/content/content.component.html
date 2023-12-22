@@ -1,0 +1,583 @@
+<!-- Banner Start -->
+<div class="andro_banner banner-2">
+    <ngx-slick-carousel #slickModal="slick-carousel" [config]="bannerConfig" class="andro_banner-slider">
+        <div ngxSlickItem class="andro_banner-slider-inner" style="background-image: url('{{item.photo}}');"
+            *ngFor="let item of bannerslides">
+            <div class="container">
+                <div class="andro_banner-slider-text">
+                    <p>Use code <strong class="custom-primary">{{item.couponcode}}</strong> during checkout</p>
+                    <h1 > {{item.title}} </h1>
+                    <p>{{item.para}}</p>
+                    <a routerLink="/shop-v1" class="andro_btn-custom">Shop Now</a>
+                </div>
+            </div>
+        </div>
+    </ngx-slick-carousel>
+</div>
+<!-- Banner End -->
+<!-- Categories Start -->
+<div class="section section-padding category_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-6 col-sm-4" *ngFor="let item of category | slice:0:6">
+                <div class="andro_icon-block text-center has-link">
+                    <a href="#">
+                        <i class="{{item.icon}}"></i>
+                        <h5>{{item.title}}</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Categories End -->
+<!-- Call To Action Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" *ngFor="let item of shopcta">
+                <div class="andro_cta">
+                    <img src="{{item.photo}}" alt="{{item.title}}">
+                    <div class="andro_cta-content">
+                        <h4 class="text-white">{{item.title}} <span class="fw-400">{{item.titlespan}}</span> </h4>
+                        <p class="text-white">{{item.para}}</p>
+                        <a routerLink="/shop-v1" class="andro_btn-custom btn-sm light">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call To Action End -->
+<!-- Icons Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4" *ngFor="let item of iconspost">
+                <div class="andro_icon-block icon-block-2">
+                    <i class={{item.icon}}></i>
+                    <h5>{{item.title}}</h5>
+                    <p>{{item.para}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Icons End -->
+<!-- Products Start -->
+<div class="section pt-0 andro_fresh-arrivals">
+    <div class="container">
+        <div class="section-title flex-title">
+            <h4 class="title">Fresh Arrivals</h4>
+            <div class="andro_arrows">
+                <i class="fa fa-arrow-left slick-arrow slider-prev"></i>
+                <i class="fa fa-arrow-right slick-arrow slider-next"></i>
+            </div>
+        </div>
+        <ngx-slick-carousel #slickModal="slick-carousel" [config]="freshConfig" class="andro_fresh-arrivals-slider">
+            <!-- Product Start -->
+            <div ngxSlickItem class="andro_product andro_product-has-controls" *ngFor="let item of shopbox | slice:0:5">
+                <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                    <i class="fa fa-star"></i>
+                    <span>Featured</span>
+                </div>
+                <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                    {{item.discount}}% Off
+                </div>
+                <div class="andro_product-thumb thumb-sm">
+                    <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                </div>
+                <div class="andro_product-body">
+                    <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
+                            {{item.title}} </a> </h5>
+                    <div class="andro_product-price">
+                        <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                            number:'1.2-2'}}</span>
+                        <span>₹{{item.price| number:'1.2-2'}}</span>
+                    </div>
+                    <div class="andro_rating-wrapper">
+                        <div class="andro_rating">
+                            <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                <ng-template let-fill="fill" let-index="index">
+                                    <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                </ng-template>
+                            </ngb-rating>
+                        </div>
+                        <span>{{item.rating}} Stars</span>
+                    </div>
+                </div>
+                <div class="andro_product-footer">
+                    <div class="andro_product-controls">
+                        <a routerLink="/product/{{item.id}}">
+                            <i ngbTooltip="Add To Cart" placement="top" class="flaticon-shopping-basket"></i>
+                        </a>
+                        <a href="javascript:void(0)" (click)="open(shopmodal, item)">
+                            <i ngbTooltip="Quick View" placement="top" class="flaticon-view"></i>
+                        </a>
+                        <a href="#">
+                            <i ngbTooltip="Compare" placement="top" class="flaticon-compare"></i>
+                        </a>
+                        <a href="#" class="favorite">
+                            <i ngbTooltip="Add To Wishlist" data-placement="top" class="flaticon-like"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- Product End -->
+        </ngx-slick-carousel>
+    </div>
+</div>
+<!-- Products End -->
+<!-- Featured Products Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="section-title">
+                    <h4 class="title">Featured Products</h4>
+                </div>
+                <div class="row">
+                    <!-- Product Start -->
+                    <div class="col-sm-6" *ngFor="let item of shopbox | slice:0:6">
+                        <div
+                            class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons">
+                            <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                                <i class="fa fa-star"></i>
+                                <span>Featured</span>
+                            </div>
+                            <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                                {{item.discount}}% Off
+                            </div>
+                            <div class="andro_product-thumb">
+                                <a routerLink="/product/{{item.id}}"><img src="{{item.img}}"
+                                        alt="{{item.title}}"></a>
+                            </div>
+                            <div class="andro_product-body">
+                                <h6 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
+                                        {{item.title}} </a> </h6>
+                                <div class="andro_rating-wrapper">
+                                    <div class="andro_rating">
+                                        <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                            <ng-template let-fill="fill" let-index="index">
+                                                <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                            </ng-template>
+                                        </ngb-rating>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="andro_product-footer">
+                                <div class="andro_product-price">
+                                    <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                        number:'1.2-2'}}</span>
+                                    <span>₹{{item.price| number:'1.2-2'}}</span>
+                                </div>
+                                <div class="andro_product-buttons">
+                                    <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                                        To Cart</a>
+                                    <a href="javascript:void(0)" (click)="open(shopmodal, item)"
+                                        class="andro_btn-custom light">Quick
+                                        View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Product End -->
+                </div>
+            </div>
+            <!-- Sidebar Start -->
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <!-- Product Categories Start -->
+                    <div class="sidebar-widget">
+                        <div class="section-title">
+                            <h4 class="title">Popular Categories</h4>
+                        </div>
+                        <ul class="sidebar-widget-list">
+                            <li *ngFor="let item of blogcategory">
+                                <a href="#"> {{item.title}} <span>({{item.count}})</span> </a>
+                                <ul>
+                                    <li *ngFor="let item of item.children"> <a href="#"> {{item.title}}
+                                            <span>({{item.count}})</span> </a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Product Categories End -->
+                    <!-- Daily Deals Start -->
+                    <div class="sidebar-widget">
+                        <div class="section-title">
+                            <h4 class="title">Daily Deals</h4>
+                        </div>
+                        <app-dealslider></app-dealslider>
+                    </div>
+                    <!-- Daily Deals End -->
+                    <!-- Newsletter Start -->
+                    <div class="sidebar-widget">
+                        <div class="andro_newsletter-form">
+                            <h5>Join our newsletter</h5>
+                            <p>Get exclusive weekly deals with our newsletter subscription</p>
+                            <form method="post">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="newsletter_email"
+                                        placeholder="Email Address" value="">
+                                </div>
+                                <button type="submit" class="andro_btn-custom secondary btn-block shadow-none"
+                                    name="button">Join Newsletter</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Newsletter End -->
+                </div>
+            </div>
+            <!-- Sidebar End -->
+        </div>
+    </div>
+</div>
+<!-- Featured Products End -->
+<!-- Call to action Start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="andro_cta-notice secondary-bg pattern-bg">
+            <div class="andro_cta-notice-inner">
+                <h3 class="text-white">Buy Today and Get 20% Off</h3>
+                <p class="text-white">Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula
+                    sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
+                <a routerLink="/shop-v1" class="andro_btn-custom light">Shop Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to action End -->
+<!-- Top Picks Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="title">Top Picks</h4>
+        </div>
+        <div class="row">
+            <!-- Product Start -->
+            <div class="col-lg-6" *ngFor="let item of shopbox | slice:0:4">
+                <div class="andro_product andro_product-list andro_product-has-controls andro_product-has-buttons">
+                    <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                        <i class="fa fa-star"></i>
+                        <span>Featured</span>
+                    </div>
+                    <div class="andro_product-thumb">
+                        <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                    </div>
+                    <div class="andro_product-body">
+                        <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                    </ng-template>
+                                </ngb-rating>
+                            </div>
+                            <span>{{item.rating}} Stars</span>
+                        </div>
+                        <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}"> {{item.title}}
+                            </a> </h5>
+                        <div class="andro_product-price">
+                            <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                number:'1.2-2'}}</span>
+                            <span>₹{{item.price | number:'1.2-2'}}</span>
+                        </div>
+                        <p>{{item.shortdesc}}</p>
+                    </div>
+                    <div class="andro_product-footer">
+                        <div class="andro_product-buttons">
+                            <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                                To Cart</a>
+                            <a href="javascript:void(0)" (click)="open(shopmodal, item)" class="andro_btn-custom light">Quick
+                                View</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Product End -->
+        </div>
+    </div>
+</div>
+<!-- Top Picks End -->
+<!-- CTA Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="andro_cta">
+                    <img src="assets/img/cta/3.jpg" alt="cta">
+                    <div class="andro_cta-content">
+                        <h4 class="text-white">Get Your <span class="fw-400">Free Service</span> </h4>
+                        <p class="text-white">Cras ultricies ligula sed magna dictum porta. Proin eget tortor risus.</p>
+                        <a routerLink="/shop-v1" class="andro_btn-custom btn-sm light">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="andro_cta">
+                    <img src="assets/img/cta/4.jpg" alt="cta">
+                    <div class="andro_cta-content">
+                        <h4 class="text-white">Engineers Design<span class="fw-400">Auto Parts</span> </h4>
+                        <a routerLink="/shop-v1" class="andro_btn-custom btn-sm light">Shop Now</a>
+                    </div>
+                </div>
+                <div class="andro_cta">
+                    <img src="assets/img/cta/5.jpg" alt="cta">
+                    <div class="andro_cta-content">
+                        <h4 class="text-white">Engineers Design<span class="fw-400">Auto Body</span> </h4>
+                        <a routerLink="/shop-v1" class="andro_btn-custom btn-sm light">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CTA End -->
+<!-- Blog Posts Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="title">From Our Blog</h4>
+        </div>
+        <!-- Article Start -->
+        <article class="andro_post andro_post-list" *ngFor="let item of blogbox | slice:0:3">
+            <div class="andro_post-thumb">
+                <a routerLink="/blog/{{item.id}}">
+                    <img src="{{item.photo}}" alt="{{item.title}}">
+                </a>
+            </div>
+            <div class="andro_post-body">
+                <div class="andro_post-categories">
+                    <a href="#" *ngFor="let tags of getBlogTags(item.tags)">{{tags.title}}</a>
+                </div>
+                <div class="andro_post-desc">
+                    <h5> <a routerLink="/blog/{{item.id}}">{{item.title}}</a> </h5>
+                    <span> <span class="fw-600">Posted On </span> <a routerLink="/blog/{{item.id}}"
+                            class="andro_post-date">{{item.postdate}}</a> </span>
+                    <p>{{item.shortdesc}}</p>
+                </div>
+                <a class="andro_btn-custom" routerLink="/blog/{{item.id}}"> Read More </a>
+            </div>
+        </article>
+        <!-- Article End -->
+    </div>
+</div>
+<!-- Blog Posts End -->
+<!-- Testimonials & Clients start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-lg-30">
+                <ngx-slick-carousel #slickModal="slick-carousel" [config]="testiConfig" class="andro_testimonials">
+                    <div ngxSlickItem class="andro_testimonial-item" *ngFor="let item of testimonial">
+                        <div class="andro_testimonials-inner">
+                            <img src="{{item.photo}}" alt="{{item.name}}">
+                            <h5>{{item.name}}</h5>
+                            <span>{{item.designation}}</span>
+                            <p>{{item.para}}</p>
+                        </div>
+                        <ul class="andro_sm">
+                            <li> <a href="#"> <i class="fab fa-facebook-f"></i> </a> </li>
+                            <li> <a href="#"> <i class="fab fa-twitter"></i> </a> </li>
+                            <li> <a href="#"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                            <li> <a href="#"> <i class="fab fa-youtube"></i> </a> </li>
+                        </ul>
+                    </div>
+                </ngx-slick-carousel>
+            </div>
+            <div class="col-lg-4">
+                <div class="andro_companies">
+                    <div class="andro_companies-item" *ngFor="let item of clientpost">
+                        <img src="{{item.icon}}" alt="{{item.companyname}}">
+                        <div class="andro_companies-item-name">
+                            <span>{{item.companyname}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonials & Clients end -->
+<!-- FAQ & Contact Form Start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 mb-lg-30">
+                <div class="section-title">
+                    <h4 class="title">FAQ</h4>
+                </div>
+                <ngb-accordion #acc="ngbAccordion" [closeOthers]="true" activeIds="static-1" class="with-gap">
+                    <ngb-panel id="static-1">
+                        <ng-template ngbPanelTitle>
+                            What is Tezzla?
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh
+                            pulvinar a. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed,
+                            convallis at tellus.
+                        </ng-template>
+                    </ngb-panel>
+                    <ngb-panel id="static-2">
+                        <ng-template ngbPanelTitle>
+                            Getting Started with Tezzla
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh
+                            pulvinar a. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed,
+                            convallis at tellus.
+                        </ng-template>
+                    </ngb-panel>
+                    <ngb-panel id="static-3">
+                        <ng-template ngbPanelTitle>
+                            Do i have the latest version?
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh
+                            pulvinar a. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed,
+                            convallis at tellus.
+                        </ng-template>
+                    </ngb-panel>
+                    <ngb-panel id="static-4">
+                        <ng-template ngbPanelTitle>
+                            How many times can I use Tezzla?
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh
+                            pulvinar a. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed,
+                            convallis at tellus.
+                        </ng-template>
+                    </ngb-panel>
+                    <ngb-panel id="static-5">
+                        <ng-template ngbPanelTitle>
+                            How to migrate my website?
+                        </ng-template>
+                        <ng-template ngbPanelContent>
+                            Nulla porttitor accumsan tincidunt. Mauris blandit aliquet elit, eget tincidunt nibh
+                            pulvinar a. Proin eget tortor risus. Vivamus magna justo, lacinia eget consectetur sed,
+                            convallis at tellus.
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </div>
+            <div class="col-lg-7">
+                <div class="section-title">
+                    <h4 class="title">Contact Us</h4>
+                </div>
+                <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <input type="text" placeholder="Full Name" class="form-control" name="name" [(ngModel)]="model.name" required>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" placeholder="Phone No." class="form-control" name="phone" [(ngModel)]="model.phone" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <input type="email" placeholder="Email Address" class="form-control" name="email" [(ngModel)]="model.email" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <input type="text" placeholder="Subject" class="form-control" name="subject" [(ngModel)]="model.subject" required>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <textarea class="form-control" placeholder="Type your message"
+                                rows="8" name="message" [(ngModel)]="model.message" required></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="andro_btn-custom primary" name="button">Send Message</button>
+                    <div class="service-error mt-4" *ngIf="error">
+                        <ngb-alert type="danger" class="mb-0" [dismissible]="false">
+                            <strong>Oops!</strong> Something bad happened. Please try again later.
+                        </ngb-alert>
+                    </div>
+                    <div [hidden]="!submitted" class="contact-message">
+                        <div *ngIf="model.id" class="contact-success">
+                            <ngb-alert type="danger" class="mb-0" [dismissible]="false">
+                                <strong>Success!</strong> Contact form has been successfully submitted.
+                            </ngb-alert>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FAQ & Contact Form End -->
+<ng-template #shopmodal let-modal>
+    <div class="modal-body">
+        <div class="close-btn close-dark close" (click)="modal.dismiss('Cross click')">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="andro_product">
+                        <div class="andro_product-badge andro_badge-featured" *ngIf="modalContent.featured">
+                            <i class="fa fa-star"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale" *ngIf="modalContent.discount">
+                            {{modalContent.discount}}% Off
+                        </div>
+                        <img [src]="modalContent.img" alt="{{modalContent.title}}">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="andro_product-content">
+                        <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <ngb-rating [max]="5" [(rate)]="modalContent.rating" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                    </ng-template>
+                                </ngb-rating>
+                            </div>
+                            <span>{{modalContent.rating}} Stars</span>
+                        </div>
+                        <h3> {{modalContent.title}} </h3>
+                        <div class="andro_product-price">
+                            <span *ngIf="modalContent.discount">₹{{modalContent.price * (100 - modalContent.discount) /
+                                100 |
+                                number:'1.2-2'}}</span>
+                            <span>₹{{modalContent.price| number:'1.2-2'}}</span>
+                        </div>
+                        <p class="andro_product-excerpt">{{modalContent.shortdesc}}</p>
+                        <form class="andro_product-atc-form">
+                            <div class="andro_product-variation-wrapper">
+                                <div class="form-group">
+                                    <select class="form-control" name="amount">
+                                        <option value="">Select Amount</option>
+                                        <option value="1">1 Piece</option>
+                                        <option value="2">2 Piece</option>
+                                        <option value="3">3 Piece</option>
+                                        <option value="4">4 Piece</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="breed">
+                                        <option value="">Select a Breed</option>
+                                        <option value="italian">Italian</option>
+                                        <option value="egyptian">Egyptian</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="qty-outter">
+                                <a routerLink="/product/{{modalContent.id}}" (click)="modal.dismiss('Cross click')" class="andro_btn-custom">Buy Now</a>
+                                <div class="qty">
+                                    <span class="qty-subtract" (click)="decrement()">
+                                        <i class="fa fa-minus"></i>
+                                    </span>
+                                    <input type="text" name="qty" value="{{counter}}">
+                                    <span class="qty-add" (click)="increment()">
+                                        <i class="fa fa-plus"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

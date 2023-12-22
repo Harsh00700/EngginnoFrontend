@@ -1,0 +1,32 @@
+[
+    {
+        "id":1,
+        "icon": "flaticon-spoiler",
+        "title": "Parts"
+    },
+    {
+        "id":2,
+        "icon": "flaticon-air-filter",
+        "title": "Batteries"
+    },
+    {
+        "id":3,
+        "icon": "flaticon-tire",
+        "title": "Wheels"
+    },
+    {
+        "id":4,
+        "icon": "flaticon-car-parts",
+        "title": "Engine Service"
+    },
+    {
+        "id":5,
+        "icon": "flaticon-nitrous-oxide",
+        "title": "Engine Oil"
+    },
+    {
+        "id":6,
+        "icon": "flaticon-disc-brake",
+        "title": "Breaks"
+    }
+]

@@ -1,0 +1,973 @@
+<!-- Banner Start -->
+<div class="andro_banner banner-3 bg-contain bg-norepeat">
+    <ngx-slick-carousel #slickModal="slick-carousel" [config]="bannerConfig" class="andro_banner-slider">
+        <!-- Banner Item Start -->
+        <div ngxSlickItem class="andro_banner-slider-inner" *ngFor="let item of shopbox | slice:0:3">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 d-none d-lg-block">
+                        <div class="andro_product">
+                            <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                                <i class="fa fa-star"></i>
+                                <span>Featured</span>
+                            </div>
+                            <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                                {{item.discount}}% Off
+                            </div>
+                            <div class="andro_product-thumb">
+                                <a routerLink="/product/{{item.id}}"><img src="{{item.img}}"
+                                        alt="{{item.title}}"></a>
+                                <div class="andro_countdown-timer">
+                                    <countdown #cd [config]="{leftTime: item.timeleft}"></countdown>
+                                </div>
+
+                            </div>
+                            <div class="andro_product-body">
+                                <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
+                                        {{item.title}} </a> </h5>
+                                <div class="andro_rating-wrapper">
+                                    <div class="andro_rating">
+                                        <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                            <ng-template let-fill="fill" let-index="index">
+                                                <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                            </ng-template>
+                                        </ngb-rating>
+                                    </div>
+                                    <span>{{item.rating}} Stars</span>
+                                </div>
+                            </div>
+                            <div class="andro_product-footer">
+                                <div class="andro_product-price">
+                                    <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                        number:'1.2-2'}}</span>
+                                    <span>₹{{item.price| number:'1.2-2'}}</span>
+                                </div>
+                                <a routerLink="/product/{{item.id}}" class="andro_btn-custom btn-sm">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+                        <p>Use code <strong class="custom-primary">AUTOMOBILE991</strong> during checkout</p>
+                        <h1> Newly PickedShockers<span class="fw-400">Can Now Be Purchased</span> </h1>
+                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh.
+                            Vestibulum ac diam sit amet quam vehicula.</p>
+                        <a routerLink="/shop-v1" class="andro_btn-custom">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Banner Item End -->
+    </ngx-slick-carousel>
+    <div class="container">
+        <div class="andro_arrows justify-content-center">
+            <i class="fa fa-arrow-left slick-arrow slider-prev"></i>
+            <i class="fa fa-arrow-right slick-arrow slider-next"></i>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
+<!-- Start plans -->
+<section class="tez-plans-sec">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="tez-plans-inner">
+                    <div class="video-section">
+                        <img src="assets/img/video-img.jpg" class="img-fluid" alt="">
+                        <div class="overlap-text">
+                            <h4>How we control your vehicle.</h4>
+                        </div>
+                        <a href="https://www.youtube.com/embed/KH1pcNUTa6U" class="video-btn popup-youtube">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <ul ngbNav #plansnav="ngbNav" class="nav nav-tabs">
+                                <li [ngbNavItem]="1" class="icon-boxes nav-item">
+                                    <a ngbNavLink>
+                                        <i class="flaticon-spoiler"></i>
+                                        <p>Parts</p>
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="tab-inner">
+                                            <h4>Parts</h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley
+                                                        of type and scrambled it to make a type specimen book.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text.</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <ngb-accordion [closeOthers]="true" activeIds="parts-1"
+                                                        class="accordion-style">
+                                                        <ngb-panel id="parts-1">
+                                                            <ng-template ngbPanelTitle>
+                                                                How does it work?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="parts-2">
+                                                            <ng-template ngbPanelTitle>
+                                                                How do you assure growth?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="parts-3">
+                                                            <ng-template ngbPanelTitle>
+                                                                How to get a free quote?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                    </ngb-accordion>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li [ngbNavItem]="2" class="icon-boxes nav-item">
+                                    <a ngbNavLink>
+                                        <i class="flaticon-tire"></i>
+                                        <p>Wheels</p>
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="tab-inner">
+                                            <h4>Wheels</h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley
+                                                        of type and scrambled it to make a type specimen book.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text.</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <ngb-accordion [closeOthers]="true" activeIds="wheels-1"
+                                                        class="accordion-style">
+                                                        <ngb-panel id="wheels-1">
+                                                            <ng-template ngbPanelTitle>
+                                                                How does it work?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="wheels-2">
+                                                            <ng-template ngbPanelTitle>
+                                                                How do you assure growth?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="wheels-3">
+                                                            <ng-template ngbPanelTitle>
+                                                                How to get a free quote?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                    </ngb-accordion>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li [ngbNavItem]="3" class="icon-boxes nav-item">
+                                    <a ngbNavLink>
+                                        <i class="flaticon-air-filter"></i>
+                                        <p>Batteries</p>
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="tab-inner">
+                                            <h4>Batteries</h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley
+                                                        of type and scrambled it to make a type specimen book.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text.</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <ngb-accordion [closeOthers]="true" activeIds="batteries-1"
+                                                        class="accordion-style">
+                                                        <ngb-panel id="batteries-1">
+                                                            <ng-template ngbPanelTitle>
+                                                                How does it work?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="batteries-2">
+                                                            <ng-template ngbPanelTitle>
+                                                                How do you assure growth?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="batteries-3">
+                                                            <ng-template ngbPanelTitle>
+                                                                How to get a free quote?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                    </ngb-accordion>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                                <li [ngbNavItem]="4" class="icon-boxes nav-item">
+                                    <a ngbNavLink>
+                                        <i class="flaticon-car-parts"></i>
+                                        <p>Engine Service</p>
+                                    </a>
+                                    <ng-template ngbNavContent>
+                                        <div class="tab-inner">
+                                            <h4>Engine Service</h4>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text ever since the 1500s, when an unknown printer took a galley
+                                                        of type and scrambled it to make a type specimen book.</p>
+                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                                                        industry. Lorem Ipsum has been the industry's standard dummy
+                                                        text.</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <ngb-accordion [closeOthers]="true" activeIds="service-1"
+                                                        class="accordion-style">
+                                                        <ngb-panel id="service-1">
+                                                            <ng-template ngbPanelTitle>
+                                                                How does it work?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="service-2">
+                                                            <ng-template ngbPanelTitle>
+                                                                How do you assure growth?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                        <ngb-panel id="service-3">
+                                                            <ng-template ngbPanelTitle>
+                                                                How to get a free quote?
+                                                            </ng-template>
+                                                            <ng-template ngbPanelContent>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and
+                                                                    typesetting industry. Lorem Ipsum has been the
+                                                                    industry's standard dummy text ever since the 1500s,
+                                                                    when an unknown printer took a galley</p>
+                                                            </ng-template>
+                                                        </ngb-panel>
+                                                    </ngb-accordion>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-8">
+                            <div [ngbNavOutlet]="plansnav"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End plans -->
+<!-- Categories Start -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2 col-md-6 col-sm-4" *ngFor="let item of category | slice:0:6">
+                <div class="andro_icon-block text-center has-link">
+                    <a href="#">
+                        <i class="{{item.icon}}"></i>
+                        <h5>{{item.title}}</h5>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Categories End -->
+<!-- Featured Products Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6" *ngFor="let row of newfeaturedpost | slice:0:2; let i = index">
+                <!-- Product Start -->
+                <div class="andro_product andro_product-list" *ngFor="let item of newfeaturedpost[i]">
+                    <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                        <i class="fa fa-star"></i>
+                        <span>Featured</span>
+                    </div>
+                    <div class="andro_product-thumb">
+                        <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                    </div>
+                    <div class="andro_product-body">
+                        <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                    </ng-template>
+                                </ngb-rating>
+                            </div>
+                            <span>{{item.rating}} Stars</span>
+                        </div>
+                        <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}"> {{item.title}}
+                            </a> </h5>
+                        <p>{{item.shortdesc}}</p>
+                        <div class="andro_product-footer">
+                            <div class="andro_product-price">
+                                <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                    number:'1.2-2'}}</span>
+                                <span>₹{{item.price| number:'1.2-2'}}</span>
+                            </div>
+                            <div class="btn-group" ngbDropdown>
+                                <a routerLink="/product/{{item.id}}" class="andro_btn-custom btn-sm">Buy Now</a>
+                                <button type="button" class="andro_btn-custom dropdown-toggle-split btn-sm"
+                                    ngbDropdownToggle>
+                                </button>
+                                <div class="dropdown-menu" ngbDropdownMenu>
+                                    <a class="dropdown-item" href="javascript:void(0)" (click)="open(shopmodal, item)">
+                                        <i class="fa fa-eye"></i> Quick View</a>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-sync"></i> Compare</a>
+                                    <a class="dropdown-item" href="#"> <i class="fa fa-heart"></i> Add To Wishlist</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Product End -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Featured Products End -->
+<!-- Call To Action Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6" *ngFor="let item of shopcta">
+                <div class="andro_cta">
+                    <img src="{{item.photo}}" alt="{{item.title}}">
+                    <div class="andro_cta-content">
+                        <h4 class="text-white">{{item.title}} <span class="fw-400">{{item.titlespan}}</span> </h4>
+                        <p class="text-white">{{item.para}}</p>
+                        <a routerLink="/shop-v1" class="andro_btn-custom btn-sm light">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call To Action End -->
+<!-- Top Category picks start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="section-title flex-title">
+            <h4 class="title">Top Picks</h4>
+            <ul class="nav" ngbNav #toppicks="ngbNav">
+                <li [ngbNavItem]="1">
+                    <a ngbNavLink>Parts</a>
+                    <ng-template ngbNavContent>
+                        <ngx-slick-carousel #slickModal="slick-carousel" [config]="topcategoryConfig"
+                            class="andro_grid-slider">
+                            <!-- Product Start -->
+                            <div ngxSlickItem
+                                class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons"
+                                *ngFor="let item of shopbox | slice:0:6">
+                                <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                                    <i class="fa fa-star"></i>
+                                    <span>Featured</span>
+                                </div>
+                                <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                                    {{item.discount}}% Off
+                                </div>
+                                <div class="andro_product-thumb">
+                                    <a routerLink="/product/{{item.id}}"><img src="{{item.img}}"
+                                            alt="{{item.title}}"></a>
+                                </div>
+                                <div class="andro_product-body">
+                                    <h6 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
+                                            {{item.title}} </a>
+                                    </h6>
+                                    <div class="andro_product-price">
+                                        <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                            number:'1.2-2'}}</span>
+                                        <span>₹{{item.price| number:'1.2-2'}}</span>
+                                    </div>
+                                    <div class="andro_rating-wrapper">
+                                        <div class="andro_rating">
+                                            <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                                <ng-template let-fill="fill" let-index="index">
+                                                    <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                                </ng-template>
+                                            </ngb-rating>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="andro_product-footer">
+                                    <div class="andro_product-buttons">
+                                        <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                                            To Cart</a>
+                                        <a href="javascript:void(0)" (click)="open(shopmodal, item)"
+                                            class="andro_btn-custom light">Quick View</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product End -->
+                        </ngx-slick-carousel>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="2">
+                    <a ngbNavLink>Lights</a>
+                    <ng-template ngbNavContent>
+                        <ngx-slick-carousel #slickModal="slick-carousel" [config]="topcategoryConfig"
+                            class="andro_grid-slider">
+                            <!-- Product Start -->
+                            <div ngxSlickItem
+                                class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons"
+                                *ngFor="let item of shopbox | slice:6:12">
+                                <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                                    <i class="fa fa-star"></i>
+                                    <span>Featured</span>
+                                </div>
+                                <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                                    {{item.discount}}% Off
+                                </div>
+                                <div class="andro_product-thumb">
+                                    <a routerLink="/product/{{item.id}}"><img src="{{item.img}}"
+                                            alt="{{item.title}}"></a>
+                                </div>
+                                <div class="andro_product-body">
+                                    <h6 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
+                                            {{item.title}} </a>
+                                    </h6>
+                                    <div class="andro_product-price">
+                                        <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                            number:'1.2-2'}}</span>
+                                        <span>₹{{item.price| number:'1.2-2'}}</span>
+                                    </div>
+                                    <div class="andro_rating-wrapper">
+                                        <div class="andro_rating">
+                                            <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                                <ng-template let-fill="fill" let-index="index">
+                                                    <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                                </ng-template>
+                                            </ngb-rating>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="andro_product-footer">
+                                    <div class="andro_product-buttons">
+                                        <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                                            To Cart</a>
+                                        <a href="javascript:void(0)" (click)="open(shopmodal, item)"
+                                            class="andro_btn-custom light">Quick View</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product End -->
+                        </ngx-slick-carousel>
+                    </ng-template>
+                </li>
+                <li [ngbNavItem]="3">
+                    <a ngbNavLink>Batteries</a>
+                    <ng-template ngbNavContent>
+                        <ngx-slick-carousel #slickModal="slick-carousel" [config]="topcategoryConfig"
+                            class="andro_grid-slider">
+                            <!-- Product Start -->
+                            <div ngxSlickItem
+                                class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons"
+                                *ngFor="let item of shopbox | slice:5:11">
+                                <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                                    <i class="fa fa-star"></i>
+                                    <span>Featured</span>
+                                </div>
+                                <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                                    {{item.discount}}% Off
+                                </div>
+                                <div class="andro_product-thumb">
+                                    <a routerLink="/product/{{item.id}}"><img src="{{item.img}}"
+                                            alt="{{item.title}}"></a>
+                                </div>
+                                <div class="andro_product-body">
+                                    <h6 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
+                                            {{item.title}} </a>
+                                    </h6>
+                                    <div class="andro_product-price">
+                                        <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                            number:'1.2-2'}}</span>
+                                        <span>₹{{item.price| number:'1.2-2'}}</span>
+                                    </div>
+                                    <div class="andro_rating-wrapper">
+                                        <div class="andro_rating">
+                                            <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                                <ng-template let-fill="fill" let-index="index">
+                                                    <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                                </ng-template>
+                                            </ngb-rating>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="andro_product-footer">
+                                    <div class="andro_product-buttons">
+                                        <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                                            To Cart</a>
+                                        <a href="javascript:void(0)" (click)="open(shopmodal, item)"
+                                            class="andro_btn-custom light">Quick View</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Product End -->
+                        </ngx-slick-carousel>
+                    </ng-template>
+                </li>
+            </ul>
+        </div>
+        <!-- Tabs Start -->
+        <div [ngbNavOutlet]="toppicks"></div>
+        <!-- Tabs End -->
+    </div>
+</div>
+<!-- Top Category picks end -->
+<!-- Call to action Start -->
+<div class="section cta-section">
+    <div class="andro_cta-notice secondary-bg pattern-bg rounded-0 section cta-section-inner">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-lg-30">
+                    <div class="andro_cta-notice-inner">
+                        <h3 class="text-white">Buy Today and Get 20% Off</h3>
+                        <p class="text-white">Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras
+                            ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque
+                            nec, egestas non nisi.</p>
+                        <a routerLink="/shop-v1" class="andro_btn-custom light">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <app-dealslider></app-dealslider>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to action End -->
+<!-- Daily Deals Start -->
+<div class="section pt-0 andro_fresh-arrivals">
+    <div class="container">
+        <div class="section-title flex-title">
+            <h4 class="title">Daily Deals</h4>
+            <div class="andro_arrows">
+                <i class="fa fa-arrow-left slick-arrow slider-prev"></i>
+                <i class="fa fa-arrow-right slick-arrow slider-next"></i>
+            </div>
+        </div>
+    </div>
+    <div class="container right-streched">
+        <div class="row justify-content-between">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-7">
+                <ngx-slick-carousel #slickModal="slick-carousel" [config]="dealsConfig" class="andro_fresh-arrivals-slider">
+                    <!-- Deal Start -->
+                    <div ngxSlickItem class="andro_product" *ngFor="let item of shopbox">
+                        <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                            <i class="fa fa-star"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                            {{item.discount}}% Off
+                        </div>
+                        <div class="andro_product-thumb">
+                            <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                            <div class="andro_countdown-timer">
+                                <countdown #cd [config]="{leftTime: item.timeleft}"></countdown>
+                            </div>
+                        </div>
+                        <div class="andro_product-body">
+                            <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}"> {{item.title}}
+                                </a>
+                            </h5>
+                            <p>{{item.shortdesc}}</p>
+                            <div class="andro_rating-wrapper">
+                                <div class="andro_rating">
+                                    <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                        <ng-template let-fill="fill" let-index="index">
+                                            <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                        </ng-template>
+                                    </ngb-rating>
+                                </div>
+                                <span>{{item.rating}} Stars</span>
+                            </div>
+                        </div>
+                        <div class="andro_product-footer">
+                            <div class="andro_product-price">
+                                <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                    number:'1.2-2'}}</span>
+                                <span>₹{{item.price| number:'1.2-2'}}</span>
+                            </div>
+                            <a routerLink="/product/{{item.id}}" class="andro_btn-custom btn-sm">Buy Now</a>
+                        </div>
+                    </div>
+                    <!-- Deal End -->
+                </ngx-slick-carousel>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Daily Deals End -->
+<!-- Blog posts start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="section-title">
+                    <h4 class="title">Latest News</h4>
+                </div>
+                <ng-masonry-grid [masonryOptions]="{ transitionDuration: '0.8s', percentPosition: true }"
+                    [useAnimation]="true" [useImagesLoaded]="true" class="row masonry">
+                    <!-- Article Start -->
+                    <ng-masonry-grid-item class="col-lg-6 col-md-6 masonry-item"
+                        *ngFor="let item of blogbox | slice:0:6">
+                        <article class="andro_post">
+                            <div class="andro_post-thumb">
+                                <a routerLink="/blog/{{item.id}}">
+                                    <img src="{{item.masonryphoto}}" alt="{{item.title}}">
+                                </a>
+                            </div>
+                            <div class="andro_post-body">
+                                <div class="andro_post-categories">
+                                    <a href="#" *ngFor="let tags of getBlogTags(item.tags)">{{tags.title}}</a>
+                                </div>
+                                <div class="andro_post-desc">
+                                    <h5> <a routerLink="/blog/{{item.id}}">{{item.title}}</a> </h5>
+                                    <span> <span class="fw-600">Posted On </span> <a
+                                            routerLink="/blog/{{item.id}}"
+                                            class="andro_post-date">{{item.postdate}}</a> </span>
+                                    <p>{{item.shortdesc}}</p>
+                                </div>
+                                <a class="andro_btn-custom btn-block" routerLink="/blog/{{item.id}}"> Read
+                                    More
+                                </a>
+                            </div>
+                        </article>
+                    </ng-masonry-grid-item>
+                    <!-- Article End -->
+                </ng-masonry-grid>
+            </div>
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <!-- About Author Start -->
+                    <div class="sidebar-widget widget-about-author">
+                        <div class="widget-about-author-inner">
+                            <img src="assets/img/people/4.jpg" alt="Jina Flock">
+                            <h5>Jina Flock</h5>
+                            <p class="mb-0">Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+                                Donec
+                                sollicitudin molestie malesuada. Mauris blandit aliquet elit, eget tincidunt nibh
+                                pulvinar a. Curabitur arcu erat, accumsan id imperdiet et,
+                                porttitor at
+                                sem.</p>
+                        </div>
+                        <ul class="andro_sm">
+                            <li> <a href="#"> <i class="fab fa-facebook-f"></i> </a> </li>
+                            <li> <a href="#"> <i class="fab fa-twitter"></i> </a> </li>
+                            <li> <a href="#"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                            <li> <a href="#"> <i class="fab fa-youtube"></i> </a> </li>
+                        </ul>
+                    </div>
+                    <!-- About Author End -->
+                    <!-- Categories Start -->
+                    <div class="sidebar-widget">
+                        <h5 class="widget-title"> Post Categories </h5>
+                        <ul class="sidebar-widget-list">
+                            <li *ngFor="let item of blogcategory">
+                                <a href="#"> {{item.title}} <span>({{item.count}})</span> </a>
+                                <ul>
+                                    <li *ngFor="let item of item.children"> <a href="#"> {{item.title}}
+                                            <span>({{item.count}})</span> </a> </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Categories End -->
+                    <!-- Fresh Products Start -->
+                    <div class="sidebar-widget widget-recent-products">
+                        <h5 class="widget-title">Fresh Products</h5>
+                        <div class="andro_product-recent" *ngFor="let item of shopbox | slice:0:4">
+                            <a class="andro_product-recent-thumb" routerLink="/product/{{item.id}}">
+                                <img src="{{item.img}}" alt="{{item.title}}">
+                                <div class="andro_product-recent-content">
+                                    <h6>{{item.title}}</h6>
+                                    <div class="andro_product-price">
+                                        <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                                            number:'1.2-2'}}</span>
+                                        <span>₹{{item.price| number:'1.2-2'}}</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <button type="button" (click)="open(shopmodal, item)">
+                                <i ngbTooltip="Quick View" placement="top" class="flaticon-view"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Fresh Products End -->
+                    <!-- CTA Start -->
+                    <div class="sidebar-widget">
+                        <div class="andro_cta">
+                            <img src="assets/img/cta/3.jpg" alt="cta">
+                            <div class="andro_cta-content">
+                                <h4 class="text-white">Grab Your <span class="fw-400">Free Service</span> </h4>
+                                <a routerLink="/shop-v1" class="andro_btn-custom btn-sm light">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- CTA End -->
+                    <!-- Newsletter Start -->
+                    <div class="sidebar-widget">
+                        <div class="andro_newsletter-form secondary-bg pattern-bg">
+                            <h5>Join our newsletter</h5>
+                            <p>Get exclusive weekly deals with our newsletter subscription</p>
+                            <form method="post">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="newsletter_email"
+                                        placeholder="Email Address" value="">
+                                </div>
+                                <button type="submit" class="andro_btn-custom btn-block" name="button">Join
+                                    Newsletter</button>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- Newsletter End -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Blog posts End -->
+<!-- Other Products Start -->
+<div class="section pt-0 andro_other-mentions">
+    <div class="container">
+        <div class="section-title flex-title">
+            <h4 class="title">Other Mentions</h4>
+            <div class="andro_arrows">
+                <i class="fa fa-arrow-left slick-arrow slider-prev"></i>
+                <i class="fa fa-arrow-right slick-arrow slider-next"></i>
+            </div>
+        </div>
+        <ngx-slick-carousel #slickModal="slick-carousel" [config]="otherConfig" class="andro_other-mentions-slider">
+            <!-- Product Start -->
+            <div ngxSlickItem
+                class="andro_product andro_product-minimal andro_product-has-controls andro_product-has-buttons"
+                *ngFor="let item of shopbox">
+                <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
+                    <i class="fa fa-star"></i>
+                    <span>Featured</span>
+                </div>
+                <div class="andro_product-badge andro_badge-sale" *ngIf="item.discount">
+                    {{item.discount}}% Off
+                </div>
+                <div class="andro_product-thumb">
+                    <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                </div>
+                <div class="andro_product-body">
+                    <h6 class="andro_product-title"> <a routerLink="/product/{{item.id}}"> {{item.title}}
+                        </a>
+                    </h6>
+                    <div class="andro_product-price">
+                        <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                            number:'1.2-2'}}</span>
+                        <span>₹{{item.price| number:'1.2-2'}}</span>
+                    </div>
+                    <div class="andro_rating-wrapper">
+                        <div class="andro_rating">
+                            <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                <ng-template let-fill="fill" let-index="index">
+                                    <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                </ng-template>
+                            </ngb-rating>
+                        </div>
+                    </div>
+                </div>
+                <div class="andro_product-footer">
+                    <div class="andro_product-buttons">
+                        <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                            To Cart</a>
+                        <a href="javascript:void(0)" (click)="open(shopmodal, item)"
+                            class="andro_btn-custom light">Quick
+                            View</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Product End -->
+        </ngx-slick-carousel>
+    </div>
+</div>
+<!-- Other Products End -->
+<!-- CTA Start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-lg-30">
+                <div class="andro_cta cta-3 primary-bg">
+                    <h6>Flash Sale</h6>
+                    <h4>Save Up To 30%</h4>
+                    <a routerLink="/about" class="andro_btn-custom secondary btn-sm">More Information</a>
+                    <img src="assets/img/cta3.png" alt="cta">
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="andro_cta cta-4 bg-cover bg-center" style="background-image: url(assets/img/cta4.jpg)">
+                    <h4>The Best Cars Available</h4>
+                    <h5>Get it while you can</h5>
+                    <a routerLink="/shop-v1" class="andro_btn-custom light btn-sm">Go to Shop</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- CTA End -->
+<ng-template #shopmodal let-modal>
+    <div class="modal-body">
+        <div class="close-btn close-dark close" (click)="modal.dismiss('Cross click')">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="andro_product">
+                        <div class="andro_product-badge andro_badge-featured" *ngIf="modalContent.featured">
+                            <i class="fa fa-star"></i>
+                            <span>Featured</span>
+                        </div>
+                        <div class="andro_product-badge andro_badge-sale" *ngIf="modalContent.discount">
+                            {{modalContent.discount}}% Off
+                        </div>
+                        <img [src]="modalContent.img" alt="{{modalContent.title}}">
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="andro_product-content">
+                        <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <ngb-rating [max]="5" [(rate)]="modalContent.rating" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                    </ng-template>
+                                </ngb-rating>
+                            </div>
+                            <span>{{modalContent.rating}} Stars</span>
+                        </div>
+                        <h3> {{modalContent.title}} </h3>
+                        <div class="andro_product-price">
+                            <span *ngIf="modalContent.discount">₹{{modalContent.price * (100 -
+                                modalContent.discount) /
+                                100 |
+                                number:'1.2-2'}}</span>
+                            <span>₹{{modalContent.price| number:'1.2-2'}}</span>
+                        </div>
+                        <p class="andro_product-excerpt">{{modalContent.shortdesc}}</p>
+                        <form class="andro_product-atc-form">
+                            <div class="andro_product-variation-wrapper">
+                                <div class="form-group">
+                                    <select class="form-control" name="amount">
+                                        <option value="">Select Amount</option>
+                                        <option value="1">1 Piece</option>
+                                        <option value="2">2 Piece</option>
+                                        <option value="3">3 Piece</option>
+                                        <option value="4">4 Piece</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="breed">
+                                        <option value="">Select a Breed</option>
+                                        <option value="italian">Italian</option>
+                                        <option value="egyptian">Egyptian</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="qty-outter">
+                                <a routerLink="/product/{{modalContent.id}}"
+                                    (click)="modal.dismiss('Cross click')" class="andro_btn-custom">Buy Now</a>
+                                <div class="qty">
+                                    <span class="qty-subtract" (click)="decrement()">
+                                        <i class="fa fa-minus"></i>
+                                    </span>
+                                    <input type="text" name="qty" value="{{counter}}">
+                                    <span class="qty-add" (click)="increment()">
+                                        <i class="fa fa-plus"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

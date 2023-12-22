@@ -1,0 +1,32 @@
+<app-preloader [isLoading]="loading"></app-preloader>
+
+<!-- Certification  Start -->
+<div class="section">
+  <div class="container">
+      <ng-masonry-grid [masonryOptions]="{ transitionDuration: '0.8s', percentPosition: true }" [useAnimation]="true"
+          [useImagesLoaded]="true" class="row masonry">
+          <!-- Article Start -->
+          <ng-masonry-grid-item class="col-lg-4 col-md-6 masonry-item"
+              *ngFor="let certificate of certificates | paginate: { itemsPerPage: 9, currentPage: page }">
+              <article class="andro_certificate">
+                  <div class="andro_certificate-thumb">
+                      <a *ngIf="certificate.image?.data">
+                          <img src="{{imageUrl + certificate.image?.data?.attributes?.url}}" alt="{{certificate.name}}">
+                      </a>
+                  </div>
+                  <div class="andro_certificate-body">
+                      <div class="andro_certificate-desc">
+                          <h5> <a>{{certificate.name}}</a> </h5>
+                          <p>{{certificate.description}}</p>
+                      </div>
+                  </div>
+              </article>
+          </ng-masonry-grid-item>
+          <!-- Article End -->
+      </ng-masonry-grid>
+      <!-- Pagination Start -->
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+      <!-- Pagination End -->
+  </div>
+</div>
+<!-- Certification End -->

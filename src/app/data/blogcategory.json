@@ -1,0 +1,59 @@
+[
+    {
+        "id": 1,
+        "title": "Parts",
+        "count": 32,
+        "children": [
+            {
+                "id": 2,
+                "title": "Auto Parts & Auto Body",
+                "count": 14,
+                "children": []
+            },
+            {
+                "id": 3,
+                "title": "Tyres",
+                "count": 39,
+                "children": []
+
+            },
+            {
+                "id": 4,
+                "title": "Indicators",
+                "count": 54,
+                "children": []
+
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Tyres",
+        "count": 24,
+        "children": []
+    },
+    {
+        "id":3,
+        "title": "Shockers",
+        "count": 44,
+        "children": []
+    },
+    {
+        "id": 4,
+        "title": "Gears",
+        "count": 15,
+        "children": []
+    },
+    {
+        "id": 5,
+        "title": "Engine Service",
+        "count": 15,
+        "children": []
+    },
+    {
+        "id": 6,
+        "title": "Wheels",
+        "count": 15,
+        "children": []
+    }
+]

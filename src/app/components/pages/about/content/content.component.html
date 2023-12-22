@@ -1,0 +1,141 @@
+<!-- Img Start -->
+<div class="section">
+  <div class="container">
+        <div class="mb-4">
+          <h2 class="title">Since<span class="custom-primary"> Its Inception</span> in 2018</h2>
+          <p class="subtitle">
+            ENGGINNO has been at the forefront of revolutionizing the automotive landscape. Founded by the visionary Mr. Hiren Morabiya, our company is dedicated to the design and manufacturing of Automotive Components under the distinguished "ENGGINNO" brand. As a key player in the industry, we specialize in catering to the dynamic Electric Vehicle (EV) market.
+          </p>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-lg-20 andro_single-img-wrapper">
+                <img src="assets/img/about2.png" alt="about us">
+            </div>
+            <div class="col-lg-6">
+                <div class="section-title-wrap mr-lg-30">
+                    <h3>Specialized in Electric Vehicle Components</h3>
+                    <p class="subtitle">
+                      Recognizing the immense potential of Electric Vehicles in India, ENGGINNO has strategically positioned itself as a premier provider of Electric Vehicle components. Our extensive range covers spare parts essential for Independent Transmission Assembly, Suspension Parts, Braking Parts, Steering Parts, and various other crucial automotive components. We offer a comprehensive solution, ensuring our clients have access to a diverse portfolio of components for their EV needs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Img End -->
+<!-- Call to action Start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="andro_cta-notice secondary-bg pattern-bg">
+            <div class="andro_cta-notice-inner">
+                <h3 class="text-white">Buy Today and Get 20% Off</h3>
+                <p class="text-white">Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
+                <a routerLink="/contact" class="andro_btn-custom light">Shop Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to action End -->
+<!-- Img Start -->
+<div class="section pt-0">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-lg-20 andro_single-img-wrapper">
+                <img src="assets/img/about.jpg" alt="img">
+                <div class="andro_dots_left"></div>
+            </div>
+            <div class="col-lg-6">
+                <div class="section-title-wrap mr-lg-30">
+                    <h3>Addressing Import Dependency</h3>
+                    <p class="subtitle">
+                      In response to the prevalent import dependency in the Electric Vehicle sector, ENGGINNO has established its own cutting-edge design and manufacturing unit. All our components are meticulously developed and produced in-house, significantly reducing reliance on imported parts. Our commitment to the 'Make in India' initiative is evident in our capability to deliver locally manufactured components meeting global standards.
+                    </p>
+                    <h3>Strategic Advantage in the EV Revolution</h3>
+                    <p class="subtitle">
+                      With a keen eye on the future of mobility, ENGGINNO has strategically positioned itself to play a pivotal role in the Electric Vehicle revolution. Our diverse range of components not only supports the evolution of Electric Vehicles but positions us as a reliable partner for OEMs seeking indigenous solutions.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Img End -->
+<!-- Call to action Start -->
+<div class="section pt-0">
+  <div class="container">
+      <div class="andro_cta-notice secondary-bg pattern-bg">
+          <div class="andro_cta-notice-inner">
+              <h3 class="text-white">Buy Today and Get 20% Off</h3>
+              <p class="text-white">Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
+              <a routerLink="/contact" class="andro_btn-custom light">Shop Now</a>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Call to action End -->
+<!-- Img Start -->
+<div class="section pt-0">
+  <div class="container">
+      <div class="row align-items-center">
+          <div class="col-lg-6">
+              <div class="section-title-wrap mr-lg-30">
+                <h3>Uncompromising Quality Assurance</h3>
+                <p class="subtitle">
+                  At ENGGINNO, quality is non-negotiable. Our manufacturing processes adhere to rigorous quality control measures, ensuring that each component leaving our facility meets the highest standards. Our dedication to quality assurance spans from the design phase to production, reflecting our commitment to delivering reliable and durable components to our valued clients.
+                </p>
+                <h3>Strategic Advantage in the EV Revolution</h3>
+                <p class="subtitle">
+                  As the automotive industry undergoes a transformative shift towards electric mobility, ENGGINNO stands as a beacon of innovation and reliability. With "ENGGINNO," our aim is not just to provide components but to actively contribute to the advancement of Electric Vehicles in India. Partner with us in shaping the future of mobility with our innovative, locally manufactured, and globally competitive automotive components.
+                </p>
+              </div>
+          </div>
+          <div class="col-lg-6 mb-lg-20 andro_single-img-wrapper">
+            <img src="assets/img/about.jpg" alt="img">
+            <div class="andro_dots_right"></div>
+        </div>
+      </div>
+      <div class="row my-5">
+        <div class="col">
+          <h2 class="title text-center">ENGGINNO<span class="custom-primary"> Driving</span> Tomorrow, Today </h2>
+        </div>
+      </div>
+  </div>
+</div>
+<!-- Img End -->
+<!-- Testimonials Start -->
+<div class="section section-padding pt-0">
+    <div class="container">
+        <div class="section-title">
+            <h4 class="title">What Are People Saying</h4>
+        </div>
+        <div class="row">
+            <!-- Testimonail item start -->
+            <div class="col-lg-4 col-md-12" *ngFor="let item of testimonial | slice:0:3">
+                <div class="andro_testimonial">
+                    <div class="andro_testimonial-body">
+                        <h5>{{item.title}}</h5>
+                        <div class="andro_rating-wrapper">
+                            <div class="andro_rating">
+                                <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
+                                    <ng-template let-fill="fill" let-index="index">
+                                        <i class="fa fa-star" [class.active]="fill === 100"></i>
+                                    </ng-template>
+                                </ngb-rating>
+                            </div>
+                        </div>
+                        <p>{{item.para | slice:0:104}}</p>
+                    </div>
+                    <div class="andro_testimonial-author">
+                        <img [src]="item.photo" alt="{{item.name}}">
+                        <div class="andro_testimonial-author-inner">
+                            <h6>{{item.name}}</h6>
+                            <span>{{item.designation}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonail item end -->
+        </div>
+    </div>
+</div>
+<!-- Testimonials End -->
