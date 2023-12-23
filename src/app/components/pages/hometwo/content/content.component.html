@@ -53,7 +53,7 @@
                                         {{item.discount}}% Off
                                     </div> -->
                                     <div class="andro_product-thumb">
-                                        <a href="javascript:void(0)" (click)="open(shopmodal, product)"><img src="{{imageUrl + product?.attributes?.thumbnail_image?.data?.attributes?.url}}"
+                                        <a href="javascript:void(0)" (click)="open(shopmodal, product)"><img src="{{product?.attributes?.thumbnail_image?.data?.attributes?.url}}"
                                                 alt="{{product?.attributes?.name}}"></a>
                                     </div>
                                     <div class="andro_product-body">
@@ -272,7 +272,7 @@
                                 {{item.discount}}% Off
                             </div> -->
                             <div class="andro_product-thumb my-5">
-                                <a routerLink="/product/{{product.id}}"><img src="{{imageUrl + product?.attributes?.thumbnail_image?.data?.attributes?.url}}"
+                                <a routerLink="/product/{{product.id}}"><img src="{{product?.attributes?.thumbnail_image?.data?.attributes?.url}}"
                                         alt="{{product?.attributes?.name}}"></a>
                             </div>
                             <div class="andro_product-body">
@@ -559,7 +559,7 @@
                         <!-- <div class="andro_product-badge andro_badge-sale" *ngIf="modalContent.discount">
                             {{modalContent.discount}}% Off
                         </div> -->
-                        <img [src]="imageUrl + modalContent?.attributes?.thumbnail_image?.data?.attributes?.url" alt="{{modalContent?.attributes?.name}}">
+                        <img [src]="modalContent?.attributes?.thumbnail_image?.data?.attributes?.url" alt="{{modalContent?.attributes?.name}}">
                     </div>
                 </div>
                 <div class="col-md-7">
