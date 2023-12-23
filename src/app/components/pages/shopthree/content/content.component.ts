@@ -1181,6 +1181,8 @@ export class ContentComponent implements OnInit {
     ];
 
     this.products = data;
+
+    this.loading = false;
   }
 
   onPageChange(page) {
