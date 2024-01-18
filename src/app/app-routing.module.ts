@@ -29,7 +29,7 @@ const routes: Routes = [
   // { path: 'checkout', loadChildren: () => import('./components/pages/checkout/checkout.module').then(m => m.CheckoutModule), data: { breadcrumb: 'Checkout' } },
   // { path: 'login', loadChildren: () => import('./components/pages/login/login.module').then(m => m.LoginModule) , data: { breadcrumb: 'Login' }},
   // { path: 'register', loadChildren: () => import('./components/pages/register/register.module').then(m => m.RegisterModule), data: { breadcrumb: 'Register' } },
-  { path: 'careers', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Careers' } },
+  { path: 'careers', loadChildren: () => import('./components/pages/careers/careers.module').then(m => m.CareersModule), data: { breadcrumb: 'Careers' } },
   { path: 'contact', loadChildren: () => import('./components/pages/contact/contact.module').then(m => m.ContactModule), data: { breadcrumb: 'Contact Us' } },
   { path: 'qr-code', loadChildren: () => import('./components/pages/qr/qr.module').then(m => m.QrModule), data: { breadcrumb: 'Downloads' } },
   { path: 'error', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } },

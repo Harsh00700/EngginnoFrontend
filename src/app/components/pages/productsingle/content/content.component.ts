@@ -13,10 +13,14 @@ import { ProductService } from 'src/app/services/products.service';
 })
 export class ContentComponent implements OnInit, AfterContentInit {
   product;
+  previousProduct;
+  nextProduct;
+
+  products = [];
 
   imageUrl: string;
 
-  constructor(private router: ActivatedRoute, private productService: ProductService) {}
+  constructor(private route: ActivatedRoute, private productService: ProductService) {}
   public shopbox: { title: string; id: number }[] = shoppost;
   public tags: { title: string; id: number }[] = blogtags;
   public category: { title: string; id: number }[] = blogcategory;
@@ -48,13 +52,6 @@ export class ContentComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    // this.productService.getProduct(this.router.snapshot.params.id).subscribe((res: any) => {
-    //   this.product = res.data;
-
-    //   console.log('====================================');
-    //   console.log('product', this.product);
-    //   console.log('====================================');
-    // });
 
     const data = [
       {
@@ -190,7 +187,7 @@ export class ContentComponent implements OnInit, AfterContentInit {
                   ext: '.jpg',
                   mime: 'image/jpeg',
                   size: 637.9,
-                  url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/17_Independent_Suspension_ae852f1205.jpg',
+                  url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/13_Independent_Suspension_139db68fbe.jpg',
                   previewUrl: null,
                   provider: 'local',
                   provider_metadata: null,
@@ -235,7 +232,7 @@ export class ContentComponent implements OnInit, AfterContentInit {
                 ext: '.jpg',
                 mime: 'image/jpeg',
                 size: 637.9,
-                url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/17_Independent_Suspension_ae852f1205.jpg',
+                url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/13_Independent_Suspension_139db68fbe.jpg',
                 previewUrl: null,
                 provider: 'local',
                 provider_metadata: null,
@@ -1092,7 +1089,7 @@ export class ContentComponent implements OnInit, AfterContentInit {
                 ext: '.png',
                 mime: 'image/png',
                 size: 923.86,
-                url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/2_Flange_Cup_1_b5d75a962c.png',
+                url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/2_Flange_Cup_1_a9986f2016.jpg',
                 previewUrl: null,
                 provider: 'local',
                 provider_metadata: null,
@@ -1185,12 +1182,40 @@ export class ContentComponent implements OnInit, AfterContentInit {
         },
       },
     ];
+    this.products = data;
 
-    this.product = data.find((product) => product.id === Number(this.router.snapshot.params.id));
+    this.route.params.subscribe((params) => {
+      this.product = this.products.find((product) => product.id === Number(this.route.snapshot.params.id));
+
+      this.getPreviousAndNextProducts();
+    })
+
+    // this.productService.getProduct(this.router.snapshot.params.id).subscribe((res: any) => {
+    //   this.product = res.data;
+
+    //   console.log('====================================');
+    //   console.log('product', this.product);
+    //   console.log('====================================');
+    // });
   }
 
   ngAfterContentInit(): void {
-    this.setProduct(this.router.snapshot.params.id);
+    this.setProduct(this.route.snapshot.params.id);
     this.imageUrl = environment.imageUrl;
+  }
+
+  getPreviousAndNextProducts() {
+    if (Number(this.route.snapshot.params.id) === 1 || Number(this.route.snapshot.params.id) === 12) {
+      if (Number(this.route.snapshot.params.id) === 1) {
+        this.previousProduct = this.products.find((product) => product.attributes.product_id === 12);
+        this.nextProduct = this.products.find((product) => product.attributes.product_id === this.product.attributes.product_id + 1);
+      } else if (Number(this.route.snapshot.params.id) === 12) {
+        this.previousProduct = this.products.find((product) => product.attributes.product_id === this.product.attributes.product_id - 1);
+        this.nextProduct = this.products.find((product) => product.attributes.product_id === 1);
+      }
+    } else {
+      this.previousProduct = this.products.find((product) => product.attributes.product_id === this.product.attributes.product_id - 1);
+      this.nextProduct = this.products.find((product) => product.attributes.product_id === this.product.attributes.product_id + 1);
+    }
   }
 }

@@ -2,31 +2,33 @@
     {
         "id":1,
         "icon": "flaticon-spoiler",
-        "title": "Parts"
+        "title": "Parts",
+        "addTitle": "Transision Parts"
     },
     {
         "id":2,
         "icon": "flaticon-air-filter",
-        "title": "Batteries"
+        "title": "Batteries",
+        "addTitle": "Transmission Parts"
     },
     {
         "id":3,
-        "icon": "flaticon-tire",
-        "title": "Wheels"
+        "icon": "flaticon-disc-brake",
+        "title": "Wheels",
+        "addTitle": "Braking Parts"
     },
     {
         "id":4,
         "icon": "flaticon-car-parts",
-        "title": "Engine Service"
+        "title": "Engine Service",
+        "addTitle": "Gear Parts"
     },
     {
         "id":5,
-        "icon": "flaticon-nitrous-oxide",
-        "title": "Engine Oil"
+        "icon": "flaticon-nitrous-oxide"
     },
     {
         "id":6,
-        "icon": "flaticon-disc-brake",
-        "title": "Breaks"
+        "icon": "flaticon-tire"
     }
 ]

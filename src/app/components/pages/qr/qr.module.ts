@@ -6,6 +6,8 @@ import { QrRoutingModule } from './qr-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
 
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 @NgModule({
   declarations: [QrComponent, ContentComponent],
   imports: [
@@ -13,6 +15,7 @@ import { SharedModule } from '../../shared/shared.module';
     QrRoutingModule,
     NgbModule,
     SharedModule,
+    PdfViewerModule
   ]
 })
 export class QrModule { }

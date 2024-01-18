@@ -49,16 +49,18 @@ export class ContentComponent implements OnInit {
   }
   // main Slider
   mainSlider = [
-    { img: "assets/img/banner/IMG_0412.jpg" },
+    // { img: "assets/img/banner/IMG_0412.jpg" },
     { img: "assets/img/products/_Y2A0736 OK-01.jpg" },
-    { img: "assets/img/banner/IMG_0418.jpg" },
+    { img: "assets/img/products/_Y2A0700 OK-01.jpg" },
+    { img: "assets/img/products/_Y2A0648 OK-01.jpg" },
+    // { img: "assets/img/banner/IMG_0418.jpg" },
   ];
   mainbannerConfig = {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
     dots: false,
-    autoplay: false
+    autoplay: true
   };
   // Banner
   bannerslider = [
@@ -334,7 +336,7 @@ export class ContentComponent implements OnInit {
                 ext: '.jpg',
                 mime: 'image/jpeg',
                 size: 637.9,
-                url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/17_Independent_Suspension_ae852f1205.jpg',
+                url: 'https://engginno-media-storage.blr1.cdn.digitaloceanspaces.com/Products/13_Independent_Suspension_139db68fbe.jpg',
                 previewUrl: null,
                 provider: 'local',
                 provider_metadata: null,

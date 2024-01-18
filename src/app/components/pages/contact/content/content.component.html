@@ -1,5 +1,5 @@
 <!-- Locations Start -->
-<div class="section section-padding">
+<!-- <div class="section section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-6" *ngFor="let item of locationbox">
@@ -15,22 +15,31 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Locations Start -->
 <!-- Icons Start -->
-<div class="section section-padding pt-0">
+<div class="section section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-4" *ngFor="let item of contactinfo">
-                <div class="andro_icon-block">
-                    <a href="#">
+                <div class="andro_icon-contact-block">
+                    <div>
                         <i class="{{item.icon}}"></i>
                         <h5>{{item.title}}</h5>
-                        <p>{{item.para}}</p>
-                    </a>
-                    <svg xmlns="http://www.w3.org/2000/svg">
-                        <rect height="500" width="500" class="andro_svg-stroke-shape-anim"></rect>
-                    </svg>
+                        <div *ngIf="item.tel || item.tel2">
+                          <a [href]="'tel:' + item.tel">{{item.tel}}</a>
+                          <a [href]="'tel:' + item.tel2">{{item.tel2}}</a></div>
+                        </div>
+                        <div *ngIf="item.mail || item.mail2">
+                          <a [href]="'mailto:' + item.mail">{{item.mail}}</a>
+                          <a [href]="'mailto:' + item.mail2">{{item.mail2}}</a>
+                        </div>
+                        <div *ngIf="item.para">
+                          <a>{{item.para}}</a>
+                        </div>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg">
+                        <rect width="500" class="andro_svg-contact-stroke-shape-anim"></rect>
+                    </svg> -->
                 </div>
             </div>
         </div>
@@ -41,7 +50,7 @@
 <div class="section pt-0">
     <div class="container">
         <div class="row">
-            <div class="col-lg-5 mb-lg-30">
+            <div class="col-lg-5 mb-lg-30 d-none">
                 <div class="section-title">
                     <h4 class="title">FAQ</h4>
                 </div>
@@ -98,7 +107,7 @@
                     </ngb-panel>
                 </ngb-accordion>
             </div>
-            <div class="col-lg-7">
+            <div class="col">
                 <div class="section-title">
                     <h4 class="title">Contact Us</h4>
                 </div>
@@ -108,7 +117,7 @@
                             <input type="text" placeholder="Full Name" class="form-control" name="name" [(ngModel)]="model.name" required>
                         </div>
                         <div class="form-group col-lg-6">
-                            <input type="text" placeholder="Phone No." class="form-control" name="phone" [(ngModel)]="model.phone" required>
+                            <input type="text" placeholder="Phone No." class="form-control" name="phone" [(ngModel)]="model.contact_number" required>
                         </div>
                         <div class="form-group col-lg-12">
                             <input type="email" placeholder="Email Address" class="form-control" name="email" [(ngModel)]="model.email" required>
@@ -127,9 +136,9 @@
                             <strong>Oops!</strong> Something bad happened. Please try again later.
                         </ngb-alert>
                     </div>
-                    <div [hidden]="!submitted" class="contact-message">
-                        <div *ngIf="model.id" class="contact-success">
-                            <ngb-alert type="danger" class="mb-0" [dismissible]="false">
+                    <div *ngIf="submitted" class="contact-message mt-4">
+                        <div class="contact-success">
+                            <ngb-alert type="success" class="mb-0" [dismissible]="false">
                                 <strong>Success!</strong> Contact form has been successfully submitted.
                             </ngb-alert>
                         </div>

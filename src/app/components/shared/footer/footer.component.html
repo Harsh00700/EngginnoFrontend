@@ -16,43 +16,39 @@
     <div class="andro_footer-middle">
         <div class="container">
             <div class="row">
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 footer-widget">
                     <h5 class="widget-title">Information</h5>
                     <ul>
                         <li> <a routerLink="/">Home</a> </li>
-                        <li> <a routerLink="/blogs">Blogs</a> </li>
-                        <li> <a routerLink="/about">About Us</a> </li>
+                        <!-- <li> <a routerLink="/blogs">Blogs</a> </li> -->
                         <li> <a routerLink="/products">Products</a> </li>
+                        <li> <a routerLink="/about">About Us</a> </li>
                         <li> <a routerLink="/contact">Contact Us</a> </li>
                     </ul>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
-                    <h5 class="widget-title">Top Categories</h5>
-                    <ul>
-                        <li> <a href="#">Parts</a> </li>
-                        <li> <a href="#">Batteries</a> </li>
-                        <li> <a href="#">Wheels</a> </li>
-                        <li> <a href="#">Lights</a> </li>
-                        <li> <a href="#">Engine Service</a> </li>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 footer-widget">
+                    <h5 class="widget-title">Featured Products</h5>
+                    <ul *ngFor="let product of featuredProducts">
+                        <li> <a [routerLink]="['/', 'product', product.id]">{{product?.attributes?.name}}</a> </li>
                     </ul>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
+                <!-- <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
                     <h5 class="widget-title">Others</h5>
                     <ul>
-                        <!-- <li> <a routerLink="/checkout">Checkout</a> </li>
-                        <li> <a routerLink="/cart">Cart</a> </li> -->
+                        <li> <a routerLink="/checkout">Checkout</a> </li>
+                        <li> <a routerLink="/cart">Cart</a> </li>
                         <li> <a routerLink="/product">Product</a> </li>
-                        <!-- <li> <a routerLink="/shop-v1">Shop</a> </li> -->
+                        <li> <a routerLink="/shop-v1">Shop</a> </li>
                         <li> <a routerLink="/legal">Legal</a> </li>
                     </ul>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">
+                </div> -->
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 footer-widget">
                     <h5 class="widget-title">Social Media</h5>
                     <ul class="social-media">
-                        <li> <a href="#" class="facebook"> <i class="fab fa-facebook-f"></i> </a> </li>
-                        <li> <a href="#" class="pinterest"> <i class="fab fa-pinterest-p"></i> </a> </li>
-                        <li> <a href="#" class="google"> <i class="fab fa-google"></i> </a> </li>
-                        <li> <a href="#" class="twitter"> <i class="fab fa-twitter"></i> </a> </li>
+                        <li> <a routerLink="/" class="facebook"> <i class="fab fa-facebook-f"></i> </a> </li>
+                        <li> <a routerLink="/" class="instagram"> <i class="fab fa-instagram"></i> </a> </li>
+                        <li> <a routerLink="/" class="youtube"> <i class="fab fa-youtube"></i> </a> </li>
+                        <li> <a routerLink="/" class="linkedin"> <i class="fab fa-linkedin-in"></i> </a> </li>
                     </ul>
                     <!-- <div class="andro_footer-offer">
                         <p>Signup and get exclusive offers and coupon codes</p>
@@ -67,12 +63,12 @@
         <div class="container">
             <ul>
                 <li> <a routerLink="/legal">Privacy Policy</a> </li>
-                <li> <a routerLink="/legal">Refund Policy</a> </li>
+                <!-- <li> <a routerLink="/legal">Refund Policy</a> </li> -->
                 <li> <a routerLink="/legal">Cookie Policy</a> </li>
                 <li> <a routerLink="/legal">Terms & Conditions</a> </li>
             </ul>
             <div class="andro_footer-copyright">
-                <p> Copyright © 2023 <a routerLink="/">engginoo.com</a> All Rights Reserved. </p>
+                <p> Copyright © '24 <a routerLink="/">engginoo.com</a> All Rights Reserved. </p>
                 <a href="javascript:void(0);" class="andro_back-to-top" id="backToTop" (click)="gotoTop()"
                     (window:scroll)="ScrolltoTop()">Back to top <i class="fas fa-chevron-up"></i> </a>
             </div>

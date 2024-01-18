@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContactService } from '../contact.service';
 import { Contact } from '../contact';
+import { ContactService } from 'src/app/services/contact.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-content',
@@ -10,19 +11,25 @@ import { Contact } from '../contact';
 })
 export class ContentComponent implements OnInit {
 
-  model = new Contact;
+  model: Contact = new Contact;
   submitted = false;
   error: {} | undefined;
 
-  constructor( private router: Router, private contactService: ContactService ) { }
+  constructor( private router: Router, private contactService: ContactService, private http: HttpClient) { }
 
   onSubmit() {
-    this.submitted = true; 
     return this.contactService.contactForm(this.model).subscribe(
-      data => this.model = data,
-      error => this.error = error
+      (response) => {
+        this.submitted = true;
+
+        console.log('Post request successful:', response);
+      },
+      (error) => {
+        this.error = error;
+        console.error('Error making post request:', error);
+      }
     );
-  } 
+  }
   // Locations
   locationbox = [
     {
@@ -43,17 +50,19 @@ export class ContentComponent implements OnInit {
     {
       icon: "flaticon-call",
       title: "Call Center",
-      para: "Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tel: "+91 7575803334",
+      tel2: "+91 2827286287"
     },
     {
       icon: "flaticon-email",
       title: "Mail Us",
-      para: "Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      mail: "marketing@engginno.com",
+      mail2: "info@engginno.com",
     },
     {
       icon: "flaticon-location",
       title: "Nearest Branch",
-      para: "Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      para: "Plot No. 2508, Almighty Gate No. 02 Main Road, Lodhika G.I.D.C., Kalavad Road, Metoda, Rajkot-360021, Gujarat, INDIA.",
     },
   ]
 

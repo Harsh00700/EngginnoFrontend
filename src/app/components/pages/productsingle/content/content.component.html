@@ -10,23 +10,23 @@
                   <!-- Pagination Start -->
                   <div class="andro_single-pagination">
                       <div class="andro_single-pagination-item andro_single-pagination-prev">
-                          <a routerLink="/product/1">
+                          <a routerLink="/product/{{previousProduct.id}}">
                               <div class="andro_single-pagination-thumb">
-                                  <img src="assets/img/products/9.png" alt="product">
+                                  <img [src]="previousProduct?.attributes.thumbnail_image.data.attributes.url" alt="{{product?.attributes.name}}">
                               </div>
                               <div class="andro_single-pagination-content">
-                                  <h6>Batteries</h6>
+                                  <h6>{{previousProduct?.attributes.name}}</h6>
                               </div>
                               <i class="fas fa-chevron-left"></i>
                           </a>
                       </div>
                       <div class="andro_single-pagination-item andro_single-pagination-next">
-                          <a routerLink="/product-v2/1">
+                          <a routerLink="/product/{{nextProduct.id}}">
                               <div class="andro_single-pagination-thumb">
-                                  <img src="assets/img/products/15.png" alt="product">
+                                  <img [src]="nextProduct?.attributes.thumbnail_image.data.attributes.url" alt="{{nextProduct?.attributes.name}}">
                               </div>
                               <div class="andro_single-pagination-content">
-                                  <h6>Breaks</h6>
+                                  <h6>{{nextProduct?.attributes.name}}</h6>
                               </div>
                               <i class="fas fa-chevron-right"></i>
                           </a>
@@ -42,7 +42,7 @@
                           <ul class="andro_sm">
                               <li> <a href="#" ngbTooltip="Share on Facebook"> <i class="fab fa-facebook-f"></i> </a>
                               </li>
-                              <li> <a href="#" ngbTooltip="Share on Twitter"> <i class="fab fa-twitter"></i> </a>
+                              <li> <a href="#" ngbTooltip="Share on Instagram"> <i class="fab fa-instagram"></i> </a>
                               </li>
                               <li> <a href="#" ngbTooltip="Share on Linkedin"> <i class="fab fa-linkedin-in"></i> </a>
                               </li>
@@ -106,7 +106,7 @@
                             </div>
                         </div> -->
                         <div class="qty-outter">
-                            <a routerLink="/product/{{product?.id}}" class="andro_btn-custom">Get Quote</a>
+                            <a routerLink="/product/{{product?.id}}" class="andro_btn-custom">Request a Callback</a>
                             <!-- <div class="qty">
                                 <span class="qty-subtract" (click)="decrement()">
                                     <i class="fa fa-minus"></i>
@@ -130,7 +130,7 @@
           <div class="andro_product-additional-info">
               <div class="row">
                   <div class="col-lg-4">
-                      <ul class="nav andro_sticky-section" ngbNav #nav="ngbNav" [activeId]="2">
+                      <ul class="nav andro_sticky-section" ngbNav #nav="ngbNav" [activeId]="product.attributes.product_id === 2 ? 4 : 2">
                           <li [ngbNavItem]="1" *ngIf="product?.attributes.working_principle">
                               <a ngbNavLink>Working Principle</a>
                               <ng-template ngbNavContent>
@@ -179,7 +179,123 @@
                                   </ng-template>
                               </ng-template>
                           </li>
-                          <li [ngbNavItem]="4" *ngIf="product?.attributes.comparative">
+                          <li [ngbNavItem]="4" *ngIf="product.attributes.product_id === 1">
+                            <a ngbNavLink>Table</a>
+                            <ng-template ngbNavContent>
+                              <div class="custom-table">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>FEATURE</th>
+                                      <th>Disc Brakes</th>
+                                      <th>Drum Brakes</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Mechanism of Operation</td>
+                                      <td>The caliper squeezes brake pads against a disc.</td>
+                                      <td>Brake shoes press outward against a drum.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Heat Dissipation</td>
+                                      <td>More efficient heat dissipation due to open design.</td>
+                                      <td>Less efficient heat dissipation due to enclosed design.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Self-Cleaning</td>
+                                      <td>Less prone to debris buildup.</td>
+                                      <td>More prone to debris buildup.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Weight</td>
+                                      <td>Generally lighter.</td>
+                                      <td>Generally heavier.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Maintenance</td>
+                                      <td>Easier inspection and maintenance due to accessibility.</td>
+                                      <td>May require more extensive disassembly for inspection and maintenance.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Cost</td>
+                                      <td>Tends to be more expensive.</td>
+                                      <td>Tends to be less expensive.</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </ng-template>
+                          </li>
+                          <li [ngbNavItem]="4" *ngIf="product.attributes.product_id === 2">
+                            <a ngbNavLink>Table</a>
+                            <ng-template ngbNavContent>
+                              <div class="custom-table">
+                                <table>
+                                  <thead>
+                                    <tr>
+                                      <th>FEATURE</th>
+                                      <th>Independent Suspension</th>
+                                      <th>Differential</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr>
+                                      <td>Functionality</td>
+                                      <td>Each wheel moves independently of the others, improving ride quality and handling.</td>
+                                      <td>Distributes torque between the wheels, allowing them to rotate at different speeds.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Ride Quality</td>
+                                      <td>Generally provides a smoother and more comfortable ride, especially on uneven surfaces.</td>
+                                      <td>Primarily addresses differences in wheel speeds, less directly related to ride quality.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Traction and Handling</td>
+                                      <td>Enhances traction and handling by allowing each wheel to react independently to road conditions.</td>
+                                      <td>Facilitates stability during turns but may not directly improve traction or handling.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Steering Response</td>
+                                      <td>Contributes to more responsive and precise steering due to the independent movement of each wheel.</td>
+                                      <td>Not directly related to steering response; focuses on torque distribution.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Body Roll</td>
+                                      <td>Can help minimize body roll during cornering, contributing to improved stability.</td>
+                                      <td>Doesn't directly address body roll; relies on other suspension components for stability.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Customization/Tuning</td>
+                                      <td>Allows for customization and tuning of components for a balance between comfort and performance.</td>
+                                      <td>Limited customization in terms of ride characteristics; adjustments may focus on differential lock settings.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Adaptability to Load</td>
+                                      <td>Adapts well to changes in load distribution, beneficial for vehicles carrying varying loads.</td>
+                                      <td>Does not directly address changes in load distribution; may affect differential performance.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Unsprung Weight</td>
+                                      <td>Can result in lower unsprung weight, contributing to improved handling.</td>
+                                      <td>Unsprung weight may vary depending on the design but is generally lower than solid axles.</td>
+                                    </tr>
+                                    <tr>
+                                      <td>Space Utilization</td>
+                                      <td>Provides flexibility in vehicle design due to its potentially compact and adaptable nature.</td>
+                                      <td>Takes up less space compared to solid axles, providing flexibility in vehicle design.</td>
+                                    </tr>
+                                    <tr>
+                                      <td></td>
+                                      <td></td>
+                                      <td></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </ng-template>
+                          </li>
+                          <!-- <li [ngbNavItem]="4" *ngIf="product?.attributes.comparative">
                             <a ngbNavLink>Comparative Study</a>
                             <ng-template ngbNavContent>
                                 <table>
@@ -199,7 +315,7 @@
                                     </tbody>
                                 </table>
                             </ng-template>
-                        </li>
+                          </li> -->
                           <li [ngbNavItem]="5" *ngIf="false">
                               <a ngbNavLink>Reviews ({{product?.attributes.reviews.length}})</a>
                               <ng-template ngbNavContent>

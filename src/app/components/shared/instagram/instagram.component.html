@@ -1,20 +1,34 @@
 <!-- Instagram Start -->
-<div class="row no-gutters">
-    <div class="col-lg-4 {{layout}} pattern-bg">
-        <div class="andro_instagram">
-            <h3 class="text-white">Follow Us On Instagram</h3>
-            <a href="#" class="andro_btn-custom light">Follow Us</a>
-        </div>
-    </div>
-    <div class="col-lg-8">
-        <div class="row no-gutters">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0" *ngFor="let item of instagram">
-                <a href="#" class="andro_ig-item">
+<div class="row">
+    <div class="container">
+      <div class="section-title-right">
+        <h4 class="title">Esteemed Partners</h4>
+      </div>
+      <div class="col-12 p-0">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 mb-4" *ngFor="let item of clients">
+                <a class="andro_ig-item">
                     <img [src]="item.img" alt="ig">
                 </a>
             </div>
         </div>
     </div>
+    </div>
+    <!-- <div class="col-lg-4 {{layout}} pattern-bg">
+        <div class="andro_instagram">
+            <h3 class="text-white">Follow Us On Instagram</h3>
+            <a href="#" class="andro_btn-custom light">Follow Us</a>
+        </div>
+    </div> -->
+    <!-- <div class="col-12">
+        <div class="row no-gutters">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0" *ngFor="let item of clients">
+                <a class="andro_ig-item">
+                    <img [src]="item.img" alt="ig">
+                </a>
+            </div>
+        </div>
+    </div> -->
 </div>
 <!-- Instagram End -->
 <div class="andro_newsletter-form newsletter-2 primary-bg rounded-0 section">

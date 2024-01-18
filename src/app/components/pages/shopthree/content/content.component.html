@@ -19,8 +19,8 @@
         <!-- Product Count & Orderby End -->
         <div class="row">
             <!-- Product Start -->
-            <div class="col-md-4 col-sm-6" *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page }">
-                <div class="andro_product andro_product-has-controls">
+            <div class="col-md-4 col-sm-6 mb-5" *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page }">
+                <div class="andro_product andro_product-has-controls d-flex flex-column justify-content-between h-100 mb-0">
                     <!-- <div class="andro_product-badge andro_badge-featured" *ngIf="item.featured">
                         <i class="fa fa-star"></i>
                         <span>Featured</span>

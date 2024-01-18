@@ -1,7 +1,15 @@
 <div class="section">
   <div class="container">
-    <div class="row">
-      <iframe [src]="sanitizedPdfUrl" frameborder="80" height="1100" width="100%"></iframe>
+    <div class="row no-gutters">
+      <div class="pdf-container">
+        <pdf-viewer [src]="pdfUrl"
+          [render-text]="false"
+          [original-size]="false"
+          [autoresize]="true"
+          (after-load-complete)="scrollToTop()"
+          style="width: 100%; height: 600px;"
+        > </pdf-viewer>
+      </div>
     </div>
   </div>
 </div>

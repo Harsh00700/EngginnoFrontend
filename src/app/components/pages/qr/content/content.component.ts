@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-content',
@@ -7,14 +6,17 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./content.component.css']
 })
 export class ContentComponent implements OnInit {
-  pdfUrl = 'assets/Engginno Brochure Design.pdf';
+  pdfUrl = "assets/Engginno Brochure '24.pdf";
 
-  sanitizedPdfUrl;
+  constructor() { }
 
-  constructor(private domSanitizer: DomSanitizer) { }
+  ngOnInit() { }
 
-  ngOnInit() {
-    this.sanitizedPdfUrl = this.domSanitizer.bypassSecurityTrustResourceUrl(this.pdfUrl);
+  scrollToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
-
 }

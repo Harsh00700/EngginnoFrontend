@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import instagramPost from '../../../data/instagram.json'
+import clients from '../../../data/clients.json'
 
 @Component({
   selector: 'app-instagram',
@@ -10,7 +10,7 @@ export class InstagramComponent implements OnInit {
 
   constructor() { }
   @Input()  layout: number | string;
-  public instagram: { img: string }[] = instagramPost;
+  public clients: { img: string }[] = clients;
 
   ngOnInit(): void {
   }

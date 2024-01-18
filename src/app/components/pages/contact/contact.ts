@@ -1,10 +1,8 @@
 export class Contact {
-
-    id: number | undefined;
-    name: string | undefined;
-    email: string | undefined;
-    phone?: string | undefined;
-    subject: string | undefined;
-    message: string | undefined;
-
+    id: number;
+    name: string;
+    contact_number: number;
+    email: string;
+    subject: string;
+    message: string;
 }
