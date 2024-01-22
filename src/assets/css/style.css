@@ -144,6 +144,10 @@ Version: 1.0.0
 1.0. General
 ========================*/
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   overflow-y: overlay;
 }

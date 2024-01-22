@@ -31,7 +31,10 @@
                 <input type="email" placeholder="Email Address" class="form-control" name="email" [(ngModel)]="contactFormData.email" required>
             </div>
         </div>
-        <button type="submit" class="andro_btn-custom primary" name="button" [disabled]="!contactForm.valid || submitted">Submit</button>
+        <div class="row justify-content-between m-0">
+          <button type="submit" class="andro_btn-custom primary" name="button" [disabled]="!contactForm.valid || submitted">Submit</button>
+          <a *ngIf="error" [routerLink]="['/']" class="andro_btn-custom"  (click)="modal.dismiss()">Go to Home</a>
+        </div>
         <div class="service-error mt-4" *ngIf="error">
           <ngb-alert type="danger" class="mb-0" [dismissible]="false">
               <strong>Oops!</strong> Something bad happened. Please try again later.
