@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Contact } from '../contact';
 import { ContactService } from 'src/app/services/contact.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-content',
@@ -11,25 +10,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContentComponent implements OnInit {
 
-  model: Contact = new Contact;
+  contactFormData: Contact = new Contact;
   submitted = false;
   error: {} | undefined;
 
-  constructor( private router: Router, private contactService: ContactService, private http: HttpClient) { }
-
-  onSubmit() {
-    return this.contactService.contactForm(this.model).subscribe(
-      (response) => {
-        this.submitted = true;
-
-        console.log('Post request successful:', response);
-      },
-      (error) => {
-        this.error = error;
-        console.error('Error making post request:', error);
-      }
-    );
-  }
+  constructor( private contactService: ContactService) { }
   // Locations
   locationbox = [
     {
@@ -69,4 +54,17 @@ export class ContentComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    this.contactService.contactForm(this.contactFormData).subscribe(
+      (response) => {
+        this.submitted = true;
+
+        console.log('Post request successful:', response);
+      },
+      (error) => {
+        this.error = error;
+        console.error('Error making post request:', error);
+      }
+    );
+  }
 }

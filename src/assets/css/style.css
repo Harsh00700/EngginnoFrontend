@@ -1224,6 +1224,15 @@ textarea {
     animation-timing-function: ease-out;
 }
 
+.andro_btn-custom:disabled {
+  cursor: not-allowed;
+  background: grey;
+}
+
+.andro_btn-custom:disabled:hover {
+  background: grey;
+}
+
 /*==================
 1.5. Colors & Badges
 ====================*/

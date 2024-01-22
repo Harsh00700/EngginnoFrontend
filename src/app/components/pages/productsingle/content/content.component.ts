@@ -1,10 +1,11 @@
-import { Component, AfterContentInit, OnInit } from '@angular/core';
+import { Component, AfterContentInit, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import shoppost from '../../../../data/shop.json';
 import blogcategory from '../../../../data/blogcategory.json';
 import blogtags from '../../../../data/blogtags.json';
 import { environment } from 'src/environments/environment';
 import { ProductService } from 'src/app/services/products.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-content',
@@ -12,6 +13,8 @@ import { ProductService } from 'src/app/services/products.service';
   styleUrls: ['./content.component.css'],
 })
 export class ContentComponent implements OnInit, AfterContentInit {
+  @ViewChild('callBackForm') callBackForm: any;
+
   product;
   previousProduct;
   nextProduct;
@@ -20,7 +23,12 @@ export class ContentComponent implements OnInit, AfterContentInit {
 
   imageUrl: string;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService) {}
+  contactFormData: {} | any = {};
+
+  submitted = false;
+  error: {} | undefined;
+
+  constructor(private route: ActivatedRoute, private productService: ProductService, private modalService: NgbModal) {}
   public shopbox: { title: string; id: number }[] = shoppost;
   public tags: { title: string; id: number }[] = blogtags;
   public category: { title: string; id: number }[] = blogcategory;
@@ -1217,5 +1225,29 @@ export class ContentComponent implements OnInit, AfterContentInit {
       this.previousProduct = this.products.find((product) => product.attributes.product_id === this.product.attributes.product_id - 1);
       this.nextProduct = this.products.find((product) => product.attributes.product_id === this.product.attributes.product_id + 1);
     }
+  }
+
+  requestACallBack(): void {
+    this.modalService.open(this.callBackForm, { centered: true, backdrop: 'static',  windowClass: 'request-call-back-form-popup-modal' });
+  }
+
+  onSubmit() {
+    // this.contactFormData.product_id = this.product.id;
+
+    this.productService.contactForm(this.contactFormData).subscribe(
+      (response) => {
+        this.submitted = true;
+
+        setTimeout(() => {
+          this.modalService.dismissAll();
+        }, 1000);
+
+        console.log('Post request successful:', response);
+      },
+      (error) => {
+        this.error = error;
+        console.error('Error making post request:', error);
+      }
+    );
   }
 }

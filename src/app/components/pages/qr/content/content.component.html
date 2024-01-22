@@ -1,4 +1,4 @@
-<div class="section">
+<div class="section" *ngIf="!error && submitted">
   <div class="container">
     <div class="row no-gutters">
       <div class="pdf-container">
@@ -13,3 +13,42 @@
     </div>
   </div>
 </div>
+
+<ng-template #downloadForm let-modal>
+  <div class="modal-body">
+      <div class="section-title">
+        <h4 class="title">Download From</h4>
+      </div>
+      <form method="post" #contactForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="form-group col-6">
+                <input type="text" placeholder="Full Name" class="form-control" name="name" [(ngModel)]="contactFormData.name" required>
+            </div>
+            <div class="form-group col-6">
+                <input type="text" placeholder="Phone No." class="form-control" name="phone" [(ngModel)]="contactFormData.contact_number" required>
+            </div>
+            <div class="form-group col-12">
+                <input type="email" placeholder="Email Address" class="form-control" name="email" [(ngModel)]="contactFormData.email" required>
+            </div>
+        </div>
+        <button type="submit" class="andro_btn-custom primary" name="button" [disabled]="!contactForm.valid || submitted">Submit</button>
+        <div class="service-error mt-4" *ngIf="error">
+          <ngb-alert type="danger" class="mb-0" [dismissible]="false">
+              <strong>Oops!</strong> Something bad happened. Please try again later.
+          </ngb-alert>
+        </div>
+        <div *ngIf="submitted" class="contact-message mt-4">
+          <div class="row justify-content-around mb-4">
+            <button type="button" class="andro_btn-custom primary" name="view" (click)="modal.dismiss('Cross click')">View Brochure</button>
+            <a class="andro_btn-custom" href="assets/Engginno Brochure '24.pdf" target="_blank" title="Download Brochure">Download Brochure</a>
+          </div>
+
+          <div class="contact-success">
+              <ngb-alert type="success" class="mb-0" [dismissible]="false">
+                  <strong>Success!</strong> Download form has been successfully submitted.
+              </ngb-alert>
+          </div>
+        </div>
+      </form>
+  </div>
+</ng-template>

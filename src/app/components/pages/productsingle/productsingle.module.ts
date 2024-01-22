@@ -8,6 +8,7 @@ import { ProductsingleComponent } from './productsingle.component';
 
 import { SharedModule } from '../../shared/shared.module';
 import { ContentComponent } from './content/content.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [ProductsingleComponent, ContentComponent],
@@ -16,6 +17,7 @@ import { ContentComponent } from './content/content.component'
     NgbModule,
     HttpClientModule,
     ProductsingleRoutingModule,
+    FormsModule,
     SharedModule
   ]
 })

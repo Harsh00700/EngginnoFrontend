@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from '../../shared/shared.module';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [QrComponent, ContentComponent],
@@ -14,6 +15,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CommonModule,
     QrRoutingModule,
     NgbModule,
+    FormsModule,
     SharedModule,
     PdfViewerModule
   ]
