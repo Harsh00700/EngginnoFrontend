@@ -5,28 +5,28 @@
           <div class="row">
               <div class="col-md-5">
                   <div class="andro_product-thumb">
-                      <img [src]="product?.attributes.image.data.attributes.url" alt="{{product?.attributes.name}}" style="border-radius: 16px;">
+                      <img [src]="imageUrl + 'Products/' + product?.attributes?.image?.data?.attributes?.name" [alt]="product?.attributes?.name" style="border-radius: 16px;">
                   </div>
                   <!-- Pagination Start -->
                   <div class="andro_single-pagination">
                       <div class="andro_single-pagination-item andro_single-pagination-prev">
-                          <a routerLink="/product/{{previousProduct.id}}">
+                          <a [routerLink]="['/', 'product', previousProduct?.id]">
                               <div class="andro_single-pagination-thumb">
-                                  <img [src]="previousProduct?.attributes.thumbnail_image.data.attributes.url" alt="{{product?.attributes.name}}">
+                                  <img [src]="imageUrl + 'Products/' + previousProduct?.attributes?.thumbnail_image?.data?.attributes?.name" [alt]="product?.attributes?.name">
                               </div>
                               <div class="andro_single-pagination-content">
-                                  <h6>{{previousProduct?.attributes.name}}</h6>
+                                  <h6>{{previousProduct?.attributes?.name}}</h6>
                               </div>
                               <i class="fas fa-chevron-left"></i>
                           </a>
                       </div>
                       <div class="andro_single-pagination-item andro_single-pagination-next">
-                          <a routerLink="/product/{{nextProduct.id}}">
+                          <a [routerLink]="['/', 'product', nextProduct?.id]">
                               <div class="andro_single-pagination-thumb">
-                                  <img [src]="nextProduct?.attributes.thumbnail_image.data.attributes.url" alt="{{nextProduct?.attributes.name}}">
+                                  <img [src]="imageUrl + 'Products/' + nextProduct?.attributes?.thumbnail_image?.data?.attributes?.name" [alt]="nextProduct?.attributes?.name">
                               </div>
                               <div class="andro_single-pagination-content">
-                                  <h6>{{nextProduct?.attributes.name}}</h6>
+                                  <h6>{{nextProduct?.attributes?.name}}</h6>
                               </div>
                               <i class="fas fa-chevron-right"></i>
                           </a>
@@ -58,13 +58,13 @@
                           </div>
                           <span>{{item.rating}} Stars</span>
                       </div> -->
-                      <h3> {{product?.attributes.name}} </h3>
+                      <h3> {{product?.attributes?.name}} </h3>
                       <!-- <div class="andro_product-price">
                           <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
                               number:'1.2-2'}}</span>
                           <span>₹{{item.price| number:'1.2-2'}}</span>
                       </div> -->
-                      <p class="andro_product-excerpt">{{product?.attributes.description}}</p>
+                      <p class="andro_product-excerpt">{{product?.attributes?.description}}</p>
                       <ul class="andro_product-meta my-4">
                           <!-- <li>
                               <span>Categories: </span>
@@ -82,7 +82,7 @@
                           <li>
                               <span>Fitment Location:</span>
                               <div class="andro_product-meta-item">
-                                  <span>{{product?.attributes.fitment_location}}</span>
+                                  <span>{{product?.attributes?.fitment_location}}</span>
                               </div>
                           </li>
                       </ul>
@@ -130,29 +130,29 @@
           <div class="andro_product-additional-info">
               <div class="row">
                   <div class="col-lg-4">
-                      <ul class="nav andro_sticky-section" ngbNav #nav="ngbNav" [activeId]="product.attributes.product_id === 2 ? 4 : 2">
-                          <li [ngbNavItem]="1" *ngIf="product?.attributes.working_principle">
+                      <ul class="nav andro_sticky-section" ngbNav #nav="ngbNav" [activeId]="product?.attributes?.product_id === 2 ? 4 : 2">
+                          <li [ngbNavItem]="1" *ngIf="product?.attributes?.working_principle">
                               <a ngbNavLink>Working Principle</a>
                               <ng-template ngbNavContent>
                                   <!-- <div [innerHtml]="item.longdescription"></div> -->
-                                  <ul *ngFor="let item of product?.attributes.working_principle">
+                                  <ul *ngFor="let item of product?.attributes?.working_principle">
                                     <li>{{item?.value}}</li>
                                   </ul>
                               </ng-template>
                           </li>
-                          <li [ngbNavItem]="2" *ngIf="product?.attributes.advantages">
+                          <li [ngbNavItem]="2" *ngIf="product?.attributes?.advantages">
                             <a ngbNavLink>Advantages</a>
                             <ng-template ngbNavContent>
                                 <!-- <div [innerHtml]="item.longdescription"></div> -->
-                                <ul *ngFor="let item of product?.attributes.advantages">
-                                  <li><strong *ngIf="item.key">{{item.key}}:</strong> <span [innerHTML]="item.value"></span></li>
+                                <ul *ngFor="let item of product?.attributes?.advantages">
+                                  <li><strong *ngIf="item?.key">{{item?.key}}:</strong> <span [innerHTML]="item?.value"></span></li>
                                 </ul>
                             </ng-template>
                           </li>
-                          <li [ngbNavItem]="3" *ngIf="product?.attributes.additional_information">
+                          <li [ngbNavItem]="3" *ngIf="product?.attributes?.additional_information">
                               <a ngbNavLink>Additional Information</a>
                               <ng-template ngbNavContent>
-                                  <ng-container *ngIf="product?.attributes.additional_information[0]?.key else productAdditionalInfo;">
+                                  <ng-container *ngIf="product?.attributes?.additional_information[0]?.key else productAdditionalInfo;">
                                     <table>
                                         <thead>
                                             <tr>
@@ -161,10 +161,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor="let item of product?.attributes.additional_information">
-                                                <td> <strong>{{item.key}}</strong> </td>
+                                            <tr *ngFor="let item of product?.attributes?.additional_information">
+                                                <td> <strong>{{item?.key}}</strong> </td>
                                                 <td>
-                                                    <span [innerHTML]="item.value"></span>
+                                                    <span [innerHTML]="item?.value"></span>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -173,13 +173,13 @@
                                   </ng-container>
 
                                   <ng-template #productAdditionalInfo>
-                                    <ul *ngFor="let item of product?.attributes.additional_information">
+                                    <ul *ngFor="let item of product?.attributes?.additional_information">
                                       <li>{{item?.value}}</li>
                                     </ul>
                                   </ng-template>
                               </ng-template>
                           </li>
-                          <li [ngbNavItem]="4" *ngIf="product.attributes.product_id === 1">
+                          <li [ngbNavItem]="4" *ngIf="product?.attributes?.product_id === 1">
                             <a ngbNavLink>Table</a>
                             <ng-template ngbNavContent>
                               <div class="custom-table">
@@ -227,7 +227,7 @@
                               </div>
                             </ng-template>
                           </li>
-                          <li [ngbNavItem]="4" *ngIf="product.attributes.product_id === 2">
+                          <li [ngbNavItem]="4" *ngIf="product?.attributes?.product_id === 2">
                             <a ngbNavLink>Table</a>
                             <ng-template ngbNavContent>
                               <div class="custom-table">
@@ -317,7 +317,7 @@
                             </ng-template>
                           </li> -->
                           <li [ngbNavItem]="5" *ngIf="false">
-                              <a ngbNavLink>Reviews ({{product?.attributes.reviews.length}})</a>
+                              <a ngbNavLink>Reviews ({{product?.attributes?.reviews?.length}})</a>
                               <ng-template ngbNavContent>
                                   <h4>Leave a Review</h4>
                                   <div class="andro_rating-wrapper">
@@ -355,10 +355,10 @@
                                   <!-- Reviews Start -->
                                   <div class="comments-list">
                                       <ul>
-                                          <li class="comment-item" *ngFor="let item of product?.attributes.reviews">
-                                              <img [src]="item.userimg" alt="{{item.username}}">
+                                          <li class="comment-item" *ngFor="let item of product?.attributes?.reviews">
+                                              <img [src]="item?.userimg" [alt]="item?.username">
                                               <div class="comment-body">
-                                                  <h5>{{item.username}}</h5>
+                                                  <h5>{{item?.username}}</h5>
                                                   <div class="andro_rating">
                                                       <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
                                                           <ng-template let-fill="fill" let-index="index">
@@ -366,8 +366,8 @@
                                                           </ng-template>
                                                       </ngb-rating>
                                                   </div>
-                                                  <span>Posted on: {{item.commentdate}}</span>
-                                                  <p>{{item.comment}}</p>
+                                                  <span>Posted on: {{item?.commentdate}}</span>
+                                                  <p>{{item?.comment}}</p>
                                                   <a href="#" class="reply-link"> Reply </a>
                                               </div>
                                           </li>
@@ -398,13 +398,24 @@
       <form method="post" #contactForm="ngForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="form-group col-6">
-                <input type="text" placeholder="Full Name" class="form-control" name="name" [(ngModel)]="contactFormData.name" required>
+              <input type="text" id="name" placeholder="Full Name" class="form-control" name="name" #fullName="ngModel" [(ngModel)]="contactFormData.name" required>
+              <div *ngIf="!fullName?.valid && (fullName?.dirty || fullName?.touched)" class="error">
+                <label *ngIf="fullName.errors.required">Name is required</label>
+              </div>
             </div>
             <div class="form-group col-6">
-                <input type="text" placeholder="Phone No." class="form-control" name="phone" [(ngModel)]="contactFormData.contact_number" required>
+              <input type="text" id="phone" placeholder="Phone No." class="form-control" name="phone" #phone="ngModel" [(ngModel)]="contactFormData.contact_number" required pattern="[1-9]{1}[0-9]{9}">
+              <div *ngIf="!phone?.valid && (phone?.dirty || phone?.touched)" class="error">
+                <label *ngIf="phone.errors.required">Phone No. is required</label>
+                <label *ngIf="phone.errors.pattern">Invalid Phone No.</label>
+              </div>
             </div>
             <div class="form-group col-12">
-                <input type="email" placeholder="Email Address" class="form-control" name="email" [(ngModel)]="contactFormData.email" required>
+              <input type="email" id="email" placeholder="Email Address" class="form-control" name="email" #email="ngModel" [(ngModel)]="contactFormData.email" required email>
+              <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+                <label *ngIf="email.errors.required">Email is required</label>
+                <label *ngIf="email.errors.email">Invalid Email Address</label>
+              </div>
             </div>
         </div>
         <div class="d-flex align-items-center">

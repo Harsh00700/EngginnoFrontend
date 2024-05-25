@@ -9,7 +9,7 @@
         </div>
         <div class="row align-items-center">
             <div class="col-lg-6 mb-lg-20 andro_single-img-wrapper">
-                <img src="assets/img/about2.png" alt="about us">
+                <img src="assets/img/images/About-Us-Car-Image.jpg" alt="about us">
             </div>
             <div class="col-lg-6">
                 <div class="section-title-wrap mr-lg-30">
@@ -27,7 +27,7 @@
 <!-- <div class="section pt-0">
     <div class="container">
         <div class="andro_cta-notice secondary-bg pattern-bg">
-            <div class="andro_cta-notice-inner">
+            <div class="andro_cta-notice-inner" style="padding: 100px;">
                 <h3 class="text-white">Buy Today and Get 20% Off</h3>
                 <p class="text-white">Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Cras ultricies ligula sed magna dictum porta. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.</p>
                 <a routerLink="/contact" class="andro_btn-custom light">Shop Now</a>
@@ -41,7 +41,7 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-lg-20 andro_single-img-wrapper">
-                <img src="assets/img/about.jpg" alt="img">
+                <img src="assets/img/images/About-Us-Section-Image1.jpg" alt="img">
                 <div class="andro_dots_left"></div>
             </div>
             <div class="col-lg-6">
@@ -90,13 +90,13 @@
               </div>
           </div>
           <div class="col-lg-6 mb-lg-20 andro_single-img-wrapper">
-            <img src="assets/img/about.jpg" alt="img">
+            <img src="assets/img/images/About-Us-Section-Image2.jpg" alt="img">
             <div class="andro_dots_right"></div>
         </div>
       </div>
       <div class="row my-5">
         <div class="col">
-          <h2 class="title text-center">ENGGINNO<span class="custom-primary"> Driving</span> Tomorrow, Today </h2>
+          <h2 class="title text-center flex-md-row flex-column" style="display: flex; align-items: center; justify-content: center; gap: 16px;">ENGGINNO <div class="gradient-dash-container d-none d-md-flex"><span class="gradient-dash"></span></div> <span class="custom-primary"> Driving</span> Tomorrow, Today </h2>
         </div>
       </div>
   </div>
@@ -113,7 +113,7 @@
             <div class="col-lg-4 col-md-12" *ngFor="let item of testimonial | slice:0:3">
                 <div class="andro_testimonial">
                     <div class="andro_testimonial-body">
-                        <h5>{{item.title}}</h5>
+                        <h5>{{item?.title}}</h5>
                         <div class="andro_rating-wrapper">
                             <div class="andro_rating">
                                 <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
@@ -123,13 +123,13 @@
                                 </ngb-rating>
                             </div>
                         </div>
-                        <p>{{item.para | slice:0:104}}</p>
+                        <p>{{item?.para | slice:0:104}}</p>
                     </div>
                     <div class="andro_testimonial-author">
-                        <img [src]="item.photo" alt="{{item.name}}">
+                        <img [src]="item?.photo" [alt]="item?.name">
                         <div class="andro_testimonial-author-inner">
-                            <h6>{{item.name}}</h6>
-                            <span>{{item.designation}}</span>
+                            <h6>{{item?.name}}</h6>
+                            <span>{{item?.designation}}</span>
                         </div>
                     </div>
                 </div>

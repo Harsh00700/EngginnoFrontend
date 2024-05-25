@@ -53,11 +53,11 @@
                                         {{item.discount}}% Off
                                     </div> -->
                                     <div class="andro_product-thumb">
-                                        <a href="javascript:void(0)" (click)="open(shopmodal, product)"><img src="{{product?.attributes?.thumbnail_image?.data?.attributes?.url}}"
-                                                alt="{{product?.attributes?.name}}"></a>
+                                        <a href="javascript:void(0)" (click)="open(shopmodal, product)"><img [src]="imageUrl + 'Products/' + product?.attributes?.thumbnail_image?.data?.attributes?.name"
+                                                [alt]="product?.attributes?.name"></a>
                                     </div>
                                     <div class="andro_product-body">
-                                        <h5 class="andro_product-title"> <a routerLink="/product/{{product?.attributes?.id}}">
+                                        <h5 class="andro_product-title"> <a [routerLink]="['/', 'product', product?.attributes?.id]">
                                                 {{product?.attributes?.name}} </a></h5>
                                         <!-- <p>{{product?.attributes?.description}}</p> -->
                                         <!-- <div class="andro_rating-wrapper">
@@ -137,14 +137,14 @@
                         <div ngxSlickItem class="container-fluid" *ngFor="let item of bannerslider">
                             <div class="row align-items-center">
                                 <div class="col-lg-6">
-                                    <p>Use code <strong class="custom-primary">{{item.couponcode}}</strong> during
+                                    <p>Use code <strong class="custom-primary">{{item?.couponcode}}</strong> during
                                         checkout</p>
-                                    <h1> {{item.title}} <span class="fw-400">{{item.titlespan}}</span> </h1>
+                                    <h1> {{item?.title}} <span class="fw-400">{{item?.titlespan}}</span> </h1>
                                     <p>{{item.para}}</p>
                                     <a routerLink="/shop-v1" class="andro_btn-custom">Shop Now</a>
                                 </div>
                                 <div class="col-lg-6 d-none d-lg-block">
-                                    <img src="{{item.photo}}" alt="{{item.title}}">
+                                    <img [src]="item?.photo" [alt]="item?.title">
                                 </div>
                             </div>
                         </div>
@@ -179,9 +179,9 @@
         <div class="row">
             <div class="col-lg-4" *ngFor="let item of iconspost">
                 <div class="andro_icon-block">
-                    <i class="{{item.icon}}"></i>
-                    <h5>{{item.title}}</h5>
-                    <p [innerHTML]="item.para"></p>
+                    <i [class]="item?.icon"></i>
+                    <h5>{{item?.title}}</h5>
+                    <p [innerHTML]="item?.para"></p>
                     <svg xmlns="http://www.w3.org/2000/svg">
                         <rect height="500" width="500" class="andro_svg-stroke-shape-anim"></rect>
                     </svg>
@@ -213,17 +213,17 @@
                     {{item.discount}}% Off
                 </div> -->
                 <div class="andro_product-thumb">
-                    <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                    <a [routerLink]="['/', 'product', item?.id]"><img [src]="item?.img" [alt]="item?.title"></a>
                 </div>
                 <div class="andro_product-body">
-                    <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
-                            {{item.title}} </a> </h5>
+                    <h5 class="andro_product-title"> <a [routerLink]="['/', 'product', item?.id]">
+                            {{item?.title}} </a> </h5>
                     <!-- <div class="andro_product-price">
                         <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
                             number:'1.2-2'}}</span>
                         <span>₹{{item.price| number:'1.2-2'}}</span>
                     </div> -->
-                    <p>{{item.shortdesc}}</p>
+                    <p>{{item?.shortdesc}}</p>
                     <!-- <div class="andro_rating-wrapper">
                         <div class="andro_rating">
                             <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
@@ -272,11 +272,11 @@
                                 {{item.discount}}% Off
                             </div> -->
                             <div class="andro_product-thumb my-5">
-                                <a routerLink="/product/{{product.id}}"><img src="{{product?.attributes?.thumbnail_image?.data?.attributes?.url}}"
+                                <a [routerLink]="['/', 'product', product?.attributes?.id]"><img [src]="imageUrl + 'Products/' + product?.attributes?.thumbnail_image?.data?.attributes?.name"
                                         alt="{{product?.attributes?.name}}"></a>
                             </div>
                             <div class="andro_product-body">
-                                <h6 class="andro_product-title"> <a routerLink="/product/{{product.id}}">
+                                <h6 class="andro_product-title"> <a [routerLink]="['/', 'product', product?.attributes?.id]">
                                         {{product?.attributes?.name}} </a> </h6>
                                 <!-- <div class="andro_rating-wrapper">
                                     <div class="andro_rating">
@@ -317,10 +317,10 @@
                         </div>
                         <ul class="sidebar-widget-list">
                             <li *ngFor="let item of blogcategory">
-                                <a href="#"> {{item.title}} <span>({{item.count}})</span> </a>
+                                <a href="#"> {{item?.title}} <span>({{item?.count}})</span> </a>
                                 <ul>
-                                    <li *ngFor="let item of item.children"> <a href="#"> {{item.title}}
-                                            <span>({{item.count}})</span> </a> </li>
+                                    <li *ngFor="let item of item.children"> <a href="#"> {{item?.title}}
+                                            <span>({{item?.count}})</span> </a> </li>
                                 </ul>
                             </li>
                         </ul>
@@ -386,7 +386,7 @@
                         <span>Featured</span>
                     </div>
                     <div class="andro_product-thumb">
-                        <a routerLink="/product/{{item.id}}"><img src="{{item.img}}" alt="{{item.title}}"></a>
+                        <a [routerLink]="['/', 'product', item?.id]"><img [src]="item?.img" [alt]="item?.title"></a>
                     </div>
                     <div class="andro_product-body">
                         <div class="andro_rating-wrapper">
@@ -397,20 +397,20 @@
                                     </ng-template>
                                 </ngb-rating>
                             </div>
-                            <span>{{item.rating}} Stars</span>
+                            <span>{{item?.rating}} Stars</span>
                         </div>
-                        <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}"> {{item.title}}
+                        <h5 class="andro_product-title"> <a [routerLink]="['/', 'product', item?.attributes?.id]"> {{item?.title}}
                             </a> </h5>
                         <div class="andro_product-price">
-                            <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
+                            <span *ngIf="item?.discount">₹{{item?.price * (100 - item?.discount) / 100 |
                                 number:'1.2-2'}}</span>
-                            <span>₹{{item.price | number:'1.2-2'}}</span>
+                            <span>₹{{item?.price | number:'1.2-2'}}</span>
                         </div>
-                        <p>{{item.shortdesc}}</p>
+                        <p>{{item?.shortdesc}}</p>
                     </div>
                     <div class="andro_product-footer">
                         <div class="andro_product-buttons">
-                            <a routerLink="/product/{{item.id}}" class="andro_btn-custom primary">Add
+                            <a [routerLink]="['/', 'product', item?.id]" class="andro_btn-custom primary">Add
                                 To Cart</a>
                             <a href="javascript:void(0)" (click)="open(shopmodal, item)"
                                 class="andro_btn-custom light">Quick
@@ -437,22 +437,22 @@
                     <div class="col-md-6" *ngFor="let item of blogbox | slice:0:4">
                         <article class="andro_post">
                             <div class="andro_post-thumb">
-                                <a routerLink="/blog/{{item.id}}">
-                                    <img src="{{item.photo}}" alt="{{item.title}}">
+                                <a [routerLink]="['/', 'blog', item?.id]">
+                                    <img [src]="item?.photo" [alt]="item?.title">
                                 </a>
                             </div>
                             <div class="andro_post-body">
                                 <div class="andro_post-categories">
-                                    <a href="#" *ngFor="let tags of getBlogTags(item.tags)">{{tags.title}}</a>
+                                    <a href="#" *ngFor="let tags of getBlogTags(item?.tags)">{{tags?.title}}</a>
                                 </div>
                                 <div class="andro_post-desc">
-                                    <h5> <a routerLink="/blog/{{item.id}}">{{item.title}}</a> </h5>
+                                    <h5> <a [routerLink]="['/', 'blog', item?.id]">{{item?.title}}</a> </h5>
                                     <span> <span class="fw-600">Posted On </span> <a
-                                            routerLink="/blog/{{item.id}}"
-                                            class="andro_post-date">{{item.postdate}}</a> </span>
-                                    <p>{{item.shortdesc}}</p>
+                                            [routerLink]="['/', 'blog', item?.id]"
+                                            class="andro_post-date">{{item?.postdate}}</a> </span>
+                                    <p>{{item?.shortdesc}}</p>
                                 </div>
-                                <a class="andro_btn-custom btn-block" routerLink="/blog/{{item.id}}"> Read More
+                                <a class="andro_btn-custom btn-block" [routerLink]="['/', 'blog', item?.id]"> Read More
                                 </a>
                             </div>
                         </article>
@@ -472,10 +472,10 @@
                             class="andro_testimonials">
                             <div ngxSlickItem class="andro_testimonial-item" *ngFor="let item of testimonial">
                                 <div class="andro_testimonials-inner">
-                                    <img src="{{item.photo}}" alt="{{item.name}}">
-                                    <h5>{{item.name}}</h5>
-                                    <span>{{item.designation}}</span>
-                                    <p>{{item.para}}</p>
+                                    <img [src]="item?.photo" [alt]="item?.name">
+                                    <h5>{{item?.name}}</h5>
+                                    <span>{{item?.designation}}</span>
+                                    <p>{{item?.para}}</p>
                                 </div>
                                 <ul class="andro_sm">
                                     <li> <a href="#"> <i class="fab fa-facebook-f"></i> </a> </li>
@@ -559,7 +559,7 @@
                         <!-- <div class="andro_product-badge andro_badge-sale" *ngIf="modalContent.discount">
                             {{modalContent.discount}}% Off
                         </div> -->
-                        <img [src]="modalContent?.attributes?.thumbnail_image?.data?.attributes?.url" alt="{{modalContent?.attributes?.name}}">
+                        <img [src]="imageUrl + 'Products/' + modalContent?.attributes?.thumbnail_image?.data?.attributes?.name" [alt]="modalContent?.attributes?.name">
                     </div>
                 </div>
                 <div class="col-md-7">

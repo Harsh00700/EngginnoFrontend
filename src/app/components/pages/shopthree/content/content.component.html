@@ -5,7 +5,7 @@
     <div class="container">
         <!-- Product Count & Orderby Start -->
         <div class="andro_shop-global">
-            <p>Showing <b>6</b> of <b>{{products.length}}</b> products </p>
+            <p>Showing <b>6</b> of <b>{{products?.length}}</b> products </p>
             <form method="post">
                 <select class="form-control" name="orderby">
                     <option value="default">Default sorting</option>
@@ -29,18 +29,18 @@
                         {{item.discount}}% Off
                     </div> -->
                     <div class="andro_product-thumb">
-                        <a routerLink="/product/{{product.id}}"><img src="{{product.attributes.thumbnail_image.data.attributes.url}}"
-                            alt="{{product.attributes.title}}"></a>
+                        <a [routerLink]="['/', 'product', product?.id]"><img [src]="imageUrl + 'Products/' + product?.attributes?.thumbnail_image?.data?.attributes?.name"
+                            [alt]="product?.attributes?.title"></a>
                     </div>
                     <div class="andro_product-body">
-                        <h5 class="andro_product-title"> <a routerLink="/product/{{product.id}}">
-                            {{product.attributes.name}} </a></h5>
+                        <h5 class="andro_product-title"> <a [routerLink]="['/', 'product', product?.id]">
+                            {{product?.attributes?.name}} </a></h5>
                         <!-- <div class="andro_product-price">
                             <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
                                 number:'1.2-2'}}</span>
                             <span>₹{{item.price| number:'1.2-2'}}</span>
                         </div> -->
-                        <p>{{product.attributes.description}}</p>
+                        <p>{{product?.attributes?.description}}</p>
                         <!-- <div class="andro_rating-wrapper">
                             <div class="andro_rating">
                                 <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
@@ -74,7 +74,7 @@
   <div class="container">
       <!-- Product Count & Orderby Start -->
       <div class="andro_shop-global">
-          <p>Showing <b>6</b> of <b>{{shopbox.length}}</b> products </p>
+          <p>Showing <b>6</b> of <b>{{shopbox?.length}}</b> products </p>
           <form method="post">
               <select class="form-control" name="orderby">
                   <option value="default">Default sorting</option>
@@ -98,18 +98,18 @@
                       {{item.discount}}% Off
                   </div> -->
                   <div class="andro_product-thumb">
-                      <a routerLink="/product/{{item.id}}"><img src="{{item.img}}"
-                          alt="{{item.title}}"></a>
+                      <a [routerLink]="['/', 'product', item?.id]"><img [src]="item?.img"
+                          [alt]="item?.title"></a>
                   </div>
                   <div class="andro_product-body">
-                      <h5 class="andro_product-title"> <a routerLink="/product/{{item.id}}">
-                          {{item.title}} </a></h5>
+                      <h5 class="andro_product-title"> <a [routerLink]="['/', 'product', item?.id]">
+                          {{item?.title}} </a></h5>
                       <!-- <div class="andro_product-price">
                           <span *ngIf="item.discount">₹{{item.price * (100 - item.discount) / 100 |
                               number:'1.2-2'}}</span>
                           <span>₹{{item.price| number:'1.2-2'}}</span>
                       </div> -->
-                      <p>{{item.shortdesc}}</p>
+                      <p>{{item?.shortdesc}}</p>
                       <!-- <div class="andro_rating-wrapper">
                           <div class="andro_rating">
                               <ngb-rating [max]="5" [(rate)]="item.rating" [readonly]="true">
@@ -156,7 +156,7 @@
                         <div class="andro_product-badge andro_badge-sale" *ngIf="modalContent.discount">
                             {{modalContent.discount}}% Off
                         </div> -->
-                        <img [src]="modalContent.attributes.thumbnail_image.data.attributes.url" alt="{{modalContent.attributes.name}}">
+                        <img [src]="modalContent?.attributes?.thumbnail_image?.data?.attributes?.url" [alt]="modalContent?.attributes?.name">
                     </div>
                 </div>
                 <div class="col-md-7">
@@ -171,14 +171,14 @@
                             </div>
                             <span>{{modalContent.attributes.rating}} Stars</span>
                         </div> -->
-                        <h3> {{modalContent.attributes.name}} </h3>
+                        <h3> {{modalContent?.attributes?.name}} </h3>
                         <!-- <div class="andro_product-price">
                             <span *ngIf="modalContent.attributes.discount">₹{{modalContent.attributes.price * (100 - modalContent.attributes.discount) /
                                 100 |
                                 number:'1.2-2'}}</span>
                             <span>₹{{modalContent.attributes.price| number:'1.2-2'}}</span>
                         </div> -->
-                        <p class="andro_product-excerpt">{{modalContent.attributes.description}}</p>
+                        <p class="andro_product-excerpt">{{modalContent?.attributes?.description}}</p>
                         <form class="andro_product-atc-form">
                             <div class="andro_product-variation-wrapper d-none">
                                 <div class="form-group">
@@ -199,7 +199,7 @@
                                 </div>
                             </div>
                             <div class="qty-outter">
-                                <a routerLink="/product/{{modalContent.id}}" (click)="modal.dismiss('Cross click')" class="andro_btn-custom">View More</a>
+                                <a [routerLink]="['/', 'product', modalContent?.id]" (click)="modal.dismiss('Cross click')" class="andro_btn-custom">View More</a>
                                 <!-- <div class="qty">
                                     <span class="qty-subtract" (click)="decrement()">
                                         <i class="fa fa-minus"></i>

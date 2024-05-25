@@ -2,33 +2,37 @@
     {
         "id":1,
         "icon": "flaticon-spoiler",
-        "title": "Parts",
-        "addTitle": "Transision Parts"
+        "title": "Braking Parts",
+        "addTitle": "Braking Parts"
     },
     {
         "id":2,
         "icon": "flaticon-air-filter",
-        "title": "Batteries",
-        "addTitle": "Transmission Parts"
+        "title": "Gear Parts",
+        "addTitle": "Gear Parts"
     },
     {
         "id":3,
         "icon": "flaticon-disc-brake",
-        "title": "Wheels",
-        "addTitle": "Braking Parts"
+        "title": "Suspension Parts",
+        "addTitle": "Suspension Parts"
     },
     {
         "id":4,
         "icon": "flaticon-car-parts",
-        "title": "Engine Service",
-        "addTitle": "Gear Parts"
+        "title": "Steering Parts",
+        "addTitle": "Steering Parts"
     },
     {
-        "id":5,
-        "icon": "flaticon-nitrous-oxide"
+      "id":5,
+      "icon": "flaticon-nitrous-oxide",
+      "title": "Fastners",
+      "addTitle": "Fastners"
     },
     {
-        "id":6,
-        "icon": "flaticon-tire"
+      "id":6,
+      "icon": "flaticon-tire",
+      "title": "Ruber Parts",
+      "addTitle": "Ruber Parts"
     }
 ]
