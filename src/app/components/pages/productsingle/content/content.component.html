@@ -130,7 +130,7 @@
           <div class="andro_product-additional-info">
               <div class="row">
                   <div class="col-lg-4">
-                      <ul class="nav andro_sticky-section" ngbNav #nav="ngbNav" [activeId]="product?.attributes?.product_id === 2 ? 4 : 2">
+                      <ul class="nav andro_sticky-section" ngbNav #nav="ngbNav" [activeId]="(product?.attributes?.name?.toLowerCase()?.includes('front disc brake') || product?.attributes?.name?.toLowerCase()?.includes('independent suspension')) ? 4 : 2">
                           <li [ngbNavItem]="1" *ngIf="product?.attributes?.working_principle">
                               <a ngbNavLink>Working Principle</a>
                               <ng-template ngbNavContent>
@@ -179,7 +179,7 @@
                                   </ng-template>
                               </ng-template>
                           </li>
-                          <li [ngbNavItem]="4" *ngIf="product?.attributes?.product_id === 1">
+                          <li [ngbNavItem]="4" *ngIf="product?.attributes?.name?.toLowerCase()?.includes('front disc brake')">
                             <a ngbNavLink>Table</a>
                             <ng-template ngbNavContent>
                               <div class="custom-table">
@@ -227,7 +227,7 @@
                               </div>
                             </ng-template>
                           </li>
-                          <li [ngbNavItem]="4" *ngIf="product?.attributes?.product_id === 2">
+                          <li [ngbNavItem]="4" *ngIf="product?.attributes?.name?.toLowerCase()?.includes('independent suspension')">
                             <a ngbNavLink>Table</a>
                             <ng-template ngbNavContent>
                               <div class="custom-table">

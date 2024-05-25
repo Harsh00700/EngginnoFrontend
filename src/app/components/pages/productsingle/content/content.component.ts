@@ -60,15 +60,17 @@ export class ContentComponent implements OnInit, AfterContentInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((res: any) => {
-      this.products = res.data;
+    this.route.params.subscribe((params) => {
+      this.productService.getProducts().subscribe((res: any) => {
+        this.products = res.data;
 
-      this.productService.getProduct(this.route.snapshot.params.id).subscribe((res: any) => {
-        this.product = res.data;
+        this.productService.getProduct(params.id).subscribe((res: any) => {
+          this.product = res.data;
 
-        this.getPreviousAndNextProducts();
+          this.getPreviousAndNextProducts();
+        });
       });
-    });
+    })
   }
 
   ngAfterContentInit(): void {
