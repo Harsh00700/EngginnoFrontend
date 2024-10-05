@@ -10,7 +10,7 @@ import { QrService } from 'src/app/services/qr.service';
 export class ContentComponent implements OnInit, AfterViewInit {
   @ViewChild('downloadForm') downloadForm: any;
 
-  pdfUrl = "assets/Engginno Brochure '24.pdf";
+  pdfUrl = "https://media.engginno.com/images/Brochures/Engginno%20Brochure%202024.09.pdf";
 
   contactFormData: {} | any = {};
 
